@@ -1,0 +1,123 @@
+┌──(lepotekil㉿kali)-[~/pg]
+└─$ nmap -vvv -T5 -Pn 192.168.224.62 -p- -A -oN twiggy.txt
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-10-17 09:52 EDT
+NSE: Loaded 157 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 09:52
+Completed NSE at 09:52, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 09:52
+Completed NSE at 09:52, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 09:52
+Completed NSE at 09:52, 0.00s elapsed
+Initiating Parallel DNS resolution of 1 host. at 09:52
+Completed Parallel DNS resolution of 1 host. at 09:52, 0.02s elapsed
+DNS resolution of 1 IPs took 0.03s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating SYN Stealth Scan at 09:52
+Scanning 192.168.224.62 [65535 ports]
+Discovered open port 22/tcp on 192.168.224.62
+Discovered open port 80/tcp on 192.168.224.62
+Discovered open port 53/tcp on 192.168.224.62
+SYN Stealth Scan Timing: About 43.59% done; ETC: 09:53 (0:00:40 remaining)
+Discovered open port 8000/tcp on 192.168.224.62
+Discovered open port 4506/tcp on 192.168.224.62
+Discovered open port 4505/tcp on 192.168.224.62
+Completed SYN Stealth Scan at 09:53, 55.00s elapsed (65535 total ports)
+Initiating Service scan at 09:53
+Scanning 6 services on 192.168.224.62
+Completed Service scan at 09:53, 11.11s elapsed (6 services on 1 host)
+Initiating OS detection (try #1) against 192.168.224.62
+Retrying OS detection (try #2) against 192.168.224.62
+Initiating Traceroute at 09:53
+Completed Traceroute at 09:53, 0.04s elapsed
+Initiating Parallel DNS resolution of 4 hosts. at 09:53
+Completed Parallel DNS resolution of 4 hosts. at 09:53, 0.03s elapsed
+DNS resolution of 4 IPs took 0.03s. Mode: Async [#: 1, OK: 0, NX: 4, DR: 0, SF: 0, TR: 4, CN: 0]
+NSE: Script scanning 192.168.224.62.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 09:53
+Completed NSE at 09:53, 8.57s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 09:53
+Completed NSE at 09:53, 0.18s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 09:53
+Completed NSE at 09:53, 0.00s elapsed
+Nmap scan report for 192.168.224.62
+Host is up, received user-set (0.029s latency).
+Scanned at 2025-10-17 09:52:35 EDT for 79s
+Not shown: 65529 filtered tcp ports (no-response)
+PORT     STATE SERVICE REASON         VERSION
+22/tcp   open  ssh     syn-ack ttl 61 OpenSSH 7.4 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 44:7d:1a:56:9b:68:ae:f5:3b:f6:38:17:73:16:5d:75 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCZz8rKSxgnT5mqHeBPqGlXFj2JJdq21roV/2M8/+0F5/5D1XsaXmbktDpKILFdBcYnLtPxWstxPq+FTbWAJad2uk3BPYWRxidK2dOozE5rKLCyxtkEqs/lO09pM6VKQUi83y5wMwI+9Akkir0AMruuFUSpeCIBt/L98g8OYxzyTsylQATnPxJrrQOWGUQYAvX6jIs25n6d3rmbXk/crg1ZfAVFEHEeR9Y6Bjc2o5YWjMp3XbOZyC4yYseoM6eH2yCSDwu1DzPYrU6cNMfxBf863w1uyhiFk3eIb5jud3kfoxIq6t5JU2DXNhEd4rdXuuinZUSxWiCpHLZ1FCi4tkX5
+|   256 1c:78:9d:83:81:52:f4:b0:1d:8e:32:03:cb:a6:18:93 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBA1gj1q7mOswnou9RvKwuX8S7WFBhz2NlaSIpYPQmM0I/vqb4T459PgJcMaJOE+WmPiMnDSFsyV3C6YszM754Hc=
+|   256 08:c9:12:d9:7b:98:98:c8:b3:99:7a:19:82:2e:a3:ea (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBzTSyInONbcDxdYULbDvI/HyrQm9m9M5b6Z825jnBEF
+53/tcp   open  domain  syn-ack ttl 61 NLnet Labs NSD
+80/tcp   open  http    syn-ack ttl 61 nginx 1.16.1
+|_http-favicon: Unknown favicon MD5: 11FB4799192313DD5474A343D9CC0A17
+|_http-server-header: nginx/1.16.1
+|_http-title: Home | Mezzanine
+| http-methods: 
+|_  Supported Methods: GET HEAD OPTIONS
+4505/tcp open  zmtp    syn-ack ttl 61 ZeroMQ ZMTP 2.0
+4506/tcp open  zmtp    syn-ack ttl 61 ZeroMQ ZMTP 2.0
+8000/tcp open  http    syn-ack ttl 61 nginx 1.16.1
+|_http-server-header: nginx/1.16.1
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Site doesn't have a title (application/json).
+|_http-open-proxy: Proxy might be redirecting requests
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose|router
+Running (JUST GUESSING): Linux 3.X|4.X|2.6.X|5.X (97%), MikroTik RouterOS 7.X (91%)
+OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:2.6 cpe:/o:linux:linux_kernel:5 cpe:/o:mikrotik:routeros:7 cpe:/o:linux:linux_kernel:5.6.3
+OS fingerprint not ideal because: Timing level 5 (Insane) used
+Aggressive OS guesses: Linux 3.10 - 4.11 (97%), Linux 3.2 - 4.14 (97%), Linux 3.13 - 4.4 (91%), Linux 3.8 - 3.16 (91%), Linux 2.6.32 - 3.13 (91%), Linux 3.4 - 3.10 (91%), Linux 4.15 (91%), Linux 4.15 - 5.19 (91%), Linux 5.0 - 5.14 (91%), MikroTik RouterOS 7.2 - 7.5 (Linux 5.6.3) (91%)
+No exact OS matches for host (test conditions non-ideal).
+TCP/IP fingerprint:
+SCAN(V=7.95%E=4%D=10/17%OT=22%CT=%CU=%PV=Y%DS=4%DC=T%G=N%TM=68F24A72%P=aarch64-unknown-linux-gnu)
+SEQ(SP=107%GCD=1%ISR=108%TI=Z%II=I%TS=A)
+SEQ(SP=107%GCD=1%ISR=10C%TI=Z%II=I%TS=A)
+OPS(O1=M578ST11NW7%O2=M578ST11NW7%O3=M578NNT11NW7%O4=M578ST11NW7%O5=M578ST11NW7%O6=M578ST11)
+WIN(W1=7120%W2=7120%W3=7120%W4=7120%W5=7120%W6=7120)
+ECN(R=Y%DF=Y%TG=40%W=7210%O=M578NNSNW7%CC=Y%Q=)
+T1(R=Y%DF=Y%TG=40%S=O%A=S+%F=AS%RD=0%Q=)
+T2(R=N)
+T3(R=N)
+T4(R=Y%DF=Y%TG=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)
+U1(R=N)
+IE(R=Y%DFI=N%TG=40%CD=S)
+
+Uptime guess: 0.001 days (since Fri Oct 17 09:52:47 2025)
+Network Distance: 4 hops
+TCP Sequence Prediction: Difficulty=263 (Good luck!)
+IP ID Sequence Generation: All zeros
+
+TRACEROUTE (using port 22/tcp)
+HOP RTT      ADDRESS
+1   31.39 ms 192.168.45.1
+2   31.34 ms 192.168.45.254
+3   31.42 ms 192.168.251.1
+4   31.40 ms 192.168.224.62
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 09:53
+Completed NSE at 09:53, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 09:53
+Completed NSE at 09:53, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 09:53
+Completed NSE at 09:53, 0.00s elapsed
+Read data files from: /usr/share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 79.07 seconds
+           Raw packets sent: 131182 (5.776MB) | Rcvd: 77 (4.148KB)
