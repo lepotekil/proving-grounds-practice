@@ -1,0 +1,100 @@
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/craft]
+└─$ nmap -vvv -T5 -Pn 192.168.164.169 -p- -A -oN nmap.txt
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-10-20 15:20 EDT
+NSE: Loaded 157 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 15:20
+Completed NSE at 15:20, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 15:20
+Completed NSE at 15:20, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 15:20
+Completed NSE at 15:20, 0.00s elapsed
+Initiating Parallel DNS resolution of 1 host. at 15:20
+Completed Parallel DNS resolution of 1 host. at 15:20, 0.03s elapsed
+DNS resolution of 1 IPs took 0.03s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating SYN Stealth Scan at 15:20
+Scanning 192.168.164.169 [65535 ports]
+Discovered open port 80/tcp on 192.168.164.169
+SYN Stealth Scan Timing: About 35.71% done; ETC: 15:21 (0:00:56 remaining)
+Completed SYN Stealth Scan at 15:21, 60.98s elapsed (65535 total ports)
+Initiating Service scan at 15:21
+Scanning 1 service on 192.168.164.169
+Completed Service scan at 15:21, 6.11s elapsed (1 service on 1 host)
+Initiating OS detection (try #1) against 192.168.164.169
+Retrying OS detection (try #2) against 192.168.164.169
+Initiating Traceroute at 15:21
+Completed Traceroute at 15:21, 0.04s elapsed
+Initiating Parallel DNS resolution of 4 hosts. at 15:21
+Completed Parallel DNS resolution of 4 hosts. at 15:21, 0.03s elapsed
+DNS resolution of 4 IPs took 0.03s. Mode: Async [#: 1, OK: 0, NX: 4, DR: 0, SF: 0, TR: 4, CN: 0]
+NSE: Script scanning 192.168.164.169.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 15:21
+Completed NSE at 15:21, 5.06s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 15:21
+Completed NSE at 15:21, 0.14s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 15:21
+Completed NSE at 15:21, 0.00s elapsed
+Nmap scan report for 192.168.164.169
+Host is up, received user-set (0.030s latency).
+Scanned at 2025-10-20 15:20:05 EDT for 76s
+Not shown: 65534 filtered tcp ports (no-response)
+PORT   STATE SERVICE REASON          VERSION
+80/tcp open  http    syn-ack ttl 125 Apache httpd 2.4.48 ((Win64) OpenSSL/1.1.1k PHP/8.0.7)
+|_http-title: Craft
+|_http-server-header: Apache/2.4.48 (Win64) OpenSSL/1.1.1k PHP/8.0.7
+|_http-favicon: Unknown favicon MD5: 556F31ACD686989B1AFCF382C05846AA
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose
+Running (JUST GUESSING): Microsoft Windows 2019|10 (92%)
+OS CPE: cpe:/o:microsoft:windows_server_2019 cpe:/o:microsoft:windows_10
+OS fingerprint not ideal because: Timing level 5 (Insane) used
+Aggressive OS guesses: Windows Server 2019 (92%), Microsoft Windows 10 1903 - 21H1 (85%), Microsoft Windows 10 1607 (85%)
+No exact OS matches for host (test conditions non-ideal).
+TCP/IP fingerprint:
+SCAN(V=7.95%E=4%D=10/20%OT=80%CT=%CU=%PV=Y%DS=4%DC=T%G=N%TM=68F68BB1%P=aarch64-unknown-linux-gnu)
+SEQ(SP=105%GCD=1%ISR=105%TI=I%TS=U)
+SEQ(SP=107%GCD=1%ISR=10C%TI=I%TS=U)
+OPS(O1=M578NW8NNS%O2=M578NW8NNS%O3=M578NW8%O4=M578NW8NNS%O5=M578NW8NNS%O6=M578NNS)
+WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FF70)
+ECN(R=Y%DF=Y%TG=80%W=FFFF%O=M578NW8NNS%CC=Y%Q=)
+T1(R=Y%DF=Y%TG=80%S=O%A=S+%F=AS%RD=0%Q=)
+T2(R=N)
+T3(R=N)
+T4(R=N)
+U1(R=N)
+IE(R=N)
+
+Network Distance: 4 hops
+TCP Sequence Prediction: Difficulty=263 (Good luck!)
+IP ID Sequence Generation: Incremental
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT      ADDRESS
+1   29.80 ms 192.168.45.1
+2   29.82 ms 192.168.45.254
+3   31.54 ms 192.168.251.1
+4   31.65 ms 192.168.164.169
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 15:21
+Completed NSE at 15:21, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 15:21
+Completed NSE at 15:21, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 15:21
+Completed NSE at 15:21, 0.00s elapsed
+Read data files from: /usr/share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 76.99 seconds
+           Raw packets sent: 131210 (5.778MB) | Rcvd: 68 (3.172KB)

