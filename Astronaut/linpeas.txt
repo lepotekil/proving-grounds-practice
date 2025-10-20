@@ -1,0 +1,319 @@
+./linpeas.sh -o interesting_perms_files
+
+
+
+                            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+                    ▄▄▄▄▄▄▄             ▄▄▄▄▄▄▄▄
+             ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄
+         ▄▄▄▄     ▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄
+         ▄    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄          ▄▄▄▄▄▄               ▄▄▄▄▄▄ ▄
+         ▄▄▄▄▄▄              ▄▄▄▄▄▄▄▄                 ▄▄▄▄ 
+         ▄▄                  ▄▄▄ ▄▄▄▄▄                  ▄▄▄
+         ▄▄                ▄▄▄▄▄▄▄▄▄▄▄▄                  ▄▄
+         ▄            ▄▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄
+         ▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄                                ▄▄▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄                       ▄▄▄▄▄▄     ▄▄▄▄
+         ▄▄▄▄   ▄▄▄▄▄                       ▄▄▄▄▄      ▄ ▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄        ▄▄▄▄▄▄▄        ▄▄▄▄▄     ▄▄▄▄▄
+         ▄▄▄▄▄▄  ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄   ▄▄▄▄▄ 
+          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄        ▄          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄                       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄                         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+          ▀▀▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▀▀▀▀▀▀
+               ▀▀▀▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▀▀
+                     ▀▀▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀▀▀
+
+    /---------------------------------------------------------------------------------\
+    |                             Do you like PEASS?                                  |                                                                                                                                                     
+    |---------------------------------------------------------------------------------|                                                                                                                                                     
+    |         Learn Cloud Hacking       :     https://training.hacktricks.xyz         |                                                                                                                                                     
+    |         Follow on Twitter         :     @hacktricks_live                        |                                                                                                                                                     
+    |         Respect on HTB            :     SirBroccoli                             |                                                                                                                                                     
+    |---------------------------------------------------------------------------------|                                                                                                                                                     
+    |                                 Thank you!                                      |                                                                                                                                                     
+    \---------------------------------------------------------------------------------/                                                                                                                                                     
+          LinPEAS-ng by carlospolop                                                                                                                                                                                                         
+                                                                                                                                                                                                                                            
+ADVISORY: This script should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own computers and/or with the computer owner's permission.                                                                                                                                                                                              
+                                                                                                                                                                                                                                            
+Linux Privesc Checklist: https://book.hacktricks.wiki/en/linux-hardening/linux-privilege-escalation-checklist.html
+ LEGEND:                                                                                                                                                                                                                                    
+  RED/YELLOW: 95% a PE vector
+  RED: You should take a look to it
+  LightCyan: Users with console
+  Blue: Users without console & mounted devs
+  Green: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMagenta: Your username
+
+ Starting LinPEAS. Caching Writable Folders...
+                               ╔═══════════════════╗
+═══════════════════════════════╣ Basic information ╠═══════════════════════════════                                                                                                                                                         
+                               ╚═══════════════════╝                                                                                                                                                                                        
+OS: Linux version 5.4.0-146-generic (buildd@lcy02-amd64-026) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1)) #163-Ubuntu SMP Fri Mar 17 18:26:02 UTC 2023
+User & Groups: uid=33(www-data) gid=33(www-data) groups=33(www-data)
+Hostname: gravity
+
+[+] /usr/bin/ping is available for network discovery (LinPEAS can discover hosts, learn more with -h)
+[+] /usr/bin/bash is available for network discovery, port scanning and port forwarding (LinPEAS can discover hosts, scan ports, and forward ports. Learn more with -h)                                                                     
+[+] /usr/bin/nc is available for network discovery & port scanning (LinPEAS can discover hosts and scan ports, learn more with -h)                                                                                                          
+                                                                                                                                                                                                                                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      ╔════════════════════════════════════╗
+══════════════════════╣ Files with Interesting Permissions ╠══════════════════════                                                                                                                                                          
+                      ╚════════════════════════════════════╝                                                                                                                                                                                
+╔══════════╣ SUID - Check easy privesc, exploits and write perms
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#sudo-and-suid                                                                                                                                             
+strings Not Found                                                                                                                                                                                                                           
+-rwsr-xr-x 1 root root 84K Nov 29  2022 /snap/core20/1852/usr/bin/chfn  --->  SuSE_9.3/10                                                                                                                                                   
+-rwsr-xr-x 1 root root 52K Nov 29  2022 /snap/core20/1852/usr/bin/chsh
+-rwsr-xr-x 1 root root 87K Nov 29  2022 /snap/core20/1852/usr/bin/gpasswd
+-rwsr-xr-x 1 root root 55K Feb  7  2022 /snap/core20/1852/usr/bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 44K Nov 29  2022 /snap/core20/1852/usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 67K Nov 29  2022 /snap/core20/1852/usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 67K Feb  7  2022 /snap/core20/1852/usr/bin/su
+-rwsr-xr-x 1 root root 163K Jan 16  2023 /snap/core20/1852/usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-x 1 root root 39K Feb  7  2022 /snap/core20/1852/usr/bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-- 1 root systemd-resolve 51K Oct 25  2022 /snap/core20/1852/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 463K Mar 30  2022 /snap/core20/1852/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 84K Mar 14  2022 /snap/core20/1611/usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 52K Mar 14  2022 /snap/core20/1611/usr/bin/chsh
+-rwsr-xr-x 1 root root 87K Mar 14  2022 /snap/core20/1611/usr/bin/gpasswd
+-rwsr-xr-x 1 root root 55K Feb  7  2022 /snap/core20/1611/usr/bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 44K Mar 14  2022 /snap/core20/1611/usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 67K Mar 14  2022 /snap/core20/1611/usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 67K Feb  7  2022 /snap/core20/1611/usr/bin/su
+-rwsr-xr-x 1 root root 163K Jan 19  2021 /snap/core20/1611/usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-x 1 root root 39K Feb  7  2022 /snap/core20/1611/usr/bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-- 1 root systemd-resolve 51K Apr 29  2022 /snap/core20/1611/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 463K Mar 30  2022 /snap/core20/1611/usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 121K Feb 22  2023 /snap/snapd/18596/usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-- 1 root messagebus 51K Oct 25  2022 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 15K Jul  8  2019 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root 144K Dec  1  2022 /usr/lib/snapd/snap-confine  --->  Ubuntu_snapd<2.37_dirty_sock_Local_Privilege_Escalation(CVE-2019-7304)
+-rwsr-xr-x 1 root root 463K Mar 30  2022 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-x 1 root root 23K Feb 21  2022 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root root 52K Nov 29  2022 /usr/bin/chsh
+-rwsr-sr-x 1 daemon daemon 55K Nov 12  2018 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+-rwsr-xr-x 1 root root 67K Feb  7  2022 /usr/bin/su
+-rwsr-xr-x 1 root root 39K Mar  7  2020 /usr/bin/fusermount
+-rwsr-xr-x 1 root root 84K Nov 29  2022 /usr/bin/chfn  --->  SuSE_9.3/10
+-rwsr-xr-x 1 root root 39K Feb  7  2022 /usr/bin/umount  --->  BSD/Linux(08-1996)
+-rwsr-xr-x 1 root root 163K Jan 16  2023 /usr/bin/sudo  --->  check_if_the_sudo_version_is_vulnerable
+-rwsr-xr-x 1 root root 67K Nov 29  2022 /usr/bin/passwd  --->  Apple_Mac_OSX(03-2006)/Solaris_8/9(12-2004)/SPARC_8/9/Sun_Solaris_2.3_to_2.5.1(02-1997)
+-rwsr-xr-x 1 root root 44K Nov 29  2022 /usr/bin/newgrp  --->  HP-UX_10.20
+-rwsr-xr-x 1 root root 55K Feb  7  2022 /usr/bin/mount  --->  Apple_Mac_OSX(Lion)_Kernel_xnu-1699.32.7_except_xnu-1699.24.8
+-rwsr-xr-x 1 root root 4.6M Feb 23  2023 /usr/bin/php7.4 (Unknown SUID binary!)
+-rwsr-xr-x 1 root root 87K Nov 29  2022 /usr/bin/gpasswd
+
+╔══════════╣ SGID
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#sudo-and-suid                                                                                                                                             
+-rwxr-sr-x 1 root shadow 83K Nov 29  2022 /snap/core20/1852/usr/bin/chage                                                                                                                                                                   
+-rwxr-sr-x 1 root shadow 31K Nov 29  2022 /snap/core20/1852/usr/bin/expiry
+-rwxr-sr-x 1 root crontab 343K Mar 30  2022 /snap/core20/1852/usr/bin/ssh-agent
+-rwxr-sr-x 1 root tty 35K Feb  7  2022 /snap/core20/1852/usr/bin/wall
+-rwxr-sr-x 1 root shadow 43K Feb  2  2023 /snap/core20/1852/usr/sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root shadow 43K Feb  2  2023 /snap/core20/1852/usr/sbin/unix_chkpwd
+-rwxr-sr-x 1 root shadow 83K Mar 14  2022 /snap/core20/1611/usr/bin/chage
+-rwxr-sr-x 1 root shadow 31K Mar 14  2022 /snap/core20/1611/usr/bin/expiry
+-rwxr-sr-x 1 root crontab 343K Mar 30  2022 /snap/core20/1611/usr/bin/ssh-agent
+-rwxr-sr-x 1 root tty 35K Feb  7  2022 /snap/core20/1611/usr/bin/wall
+-rwxr-sr-x 1 root shadow 43K Sep 17  2021 /snap/core20/1611/usr/sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root shadow 43K Sep 17  2021 /snap/core20/1611/usr/sbin/unix_chkpwd
+-rwxr-sr-x 1 root utmp 15K Sep 30  2019 /usr/lib/x86_64-linux-gnu/utempter/utempter
+-rwsr-sr-x 1 daemon daemon 55K Nov 12  2018 /usr/bin/at  --->  RTru64_UNIX_4.0g(CVE-2002-1614)
+-rwxr-sr-x 1 root tty 15K Mar 30  2020 /usr/bin/bsd-write
+-rwxr-sr-x 1 root shadow 83K Nov 29  2022 /usr/bin/chage
+-rwxr-sr-x 1 root tty 35K Feb  7  2022 /usr/bin/wall
+-rwxr-sr-x 1 root shadow 31K Nov 29  2022 /usr/bin/expiry
+-rwxr-sr-x 1 root ssh 343K Mar 30  2022 /usr/bin/ssh-agent
+-rwxr-sr-x 1 root crontab 43K Feb 13  2020 /usr/bin/crontab
+-rwxr-sr-x 1 root shadow 43K Feb  2  2023 /usr/sbin/unix_chkpwd
+-rwxr-sr-x 1 root shadow 43K Feb  2  2023 /usr/sbin/pam_extrausers_chkpwd
+
+╔══════════╣ Files with ACLs (limited to 50)
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#acls                                                                                                                                                      
+files with acls in searched folders Not Found                                                                                                                                                                                               
+                                                                                                                                                                                                                                            
+╔══════════╣ Capabilities
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#capabilities                                                                                                                                              
+══╣ Current shell capabilities                                                                                                                                                                                                              
+./linpeas.sh: 7795: [[: not found                                                                                                                                                                                                           
+CapInh:  [Invalid capability format]
+./linpeas.sh: 7795: [[: not found
+CapPrm:  [Invalid capability format]
+./linpeas.sh: 7786: [[: not found
+CapEff:  [Invalid capability format]
+./linpeas.sh: 7795: [[: not found
+CapBnd:  [Invalid capability format]
+./linpeas.sh: 7795: [[: not found
+CapAmb:  [Invalid capability format]
+
+╚ Parent process capabilities
+./linpeas.sh: 7820: [[: not found                                                                                                                                                                                                           
+CapInh:  [Invalid capability format]
+./linpeas.sh: 7820: [[: not found
+CapPrm:  [Invalid capability format]
+./linpeas.sh: 7811: [[: not found
+CapEff:  [Invalid capability format]
+./linpeas.sh: 7820: [[: not found
+CapBnd:  [Invalid capability format]
+./linpeas.sh: 7820: [[: not found
+CapAmb:  [Invalid capability format]
+
+
+Files with capabilities (limited to 50):
+/snap/core20/1852/usr/bin/ping = cap_net_raw+ep
+/snap/core20/1611/usr/bin/ping = cap_net_raw+ep
+/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper = cap_net_bind_service,cap_net_admin+ep
+/usr/bin/ping = cap_net_raw+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+/usr/bin/traceroute6.iputils = cap_net_raw+ep
+
+╔══════════╣ Users with capabilities
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#capabilities                                                                                                                                              
+                                                                                                                                                                                                                                            
+╔══════════╣ Checking misconfigurations of ld.so
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#ldso                                                                                                                                                      
+/etc/ld.so.conf                                                                                                                                                                                                                             
+Content of /etc/ld.so.conf:                                                                                                                                                                                                                 
+include /etc/ld.so.conf.d/*.conf
+
+/etc/ld.so.conf.d
+  /etc/ld.so.conf.d/libc.conf                                                                                                                                                                                                               
+  - /usr/local/lib                                                                                                                                                                                                                          
+  /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+  - /usr/local/lib/x86_64-linux-gnu                                                                                                                                                                                                         
+  - /lib/x86_64-linux-gnu
+  - /usr/lib/x86_64-linux-gnu
+
+/etc/ld.so.preload
+╔══════════╣ Files (scripts) in /etc/profile.d/                                                                                                                                                                                             
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#profiles-files                                                                                                                                            
+total 44                                                                                                                                                                                                                                    
+drwxr-xr-x   2 root root 4096 Mar 29  2023 .
+drwxr-xr-x 103 root root 4096 Mar 29  2023 ..
+-rw-r--r--   1 root root   96 Dec  5  2019 01-locale-fix.sh
+-rw-r--r--   1 root root  835 May 11  2022 apps-bin-path.sh
+-rw-r--r--   1 root root  729 Feb  2  2020 bash_completion.sh
+-rw-r--r--   1 root root 1003 Aug 13  2019 cedilla-portuguese.sh
+-rw-r--r--   1 root root 1107 Nov  3  2019 gawk.csh
+-rw-r--r--   1 root root  757 Nov  3  2019 gawk.sh
+-rw-r--r--   1 root root 1557 Feb 17  2020 Z97-byobu.sh
+-rwxr-xr-x   1 root root  873 Jun 15  2022 Z99-cloudinit-warnings.sh
+-rwxr-xr-x   1 root root 3417 Jun 15  2022 Z99-cloud-locale-test.sh
+
+╔══════════╣ Permissions in init, init.d, systemd, and rc.d
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#init-initd-systemd-and-rcd                                                                                                                                
+                                                                                                                                                                                                                                            
+╔══════════╣ AppArmor binary profiles
+-rw-r--r-- 1 root root  3500 Jan 31  2023 sbin.dhclient                                                                                                                                                                                     
+-rw-r--r-- 1 root root  3202 Feb 25  2020 usr.bin.man
+-rw-r--r-- 1 root root 28486 Nov 28  2022 usr.lib.snapd.snap-confine.real
+-rw-r--r-- 1 root root  1575 Feb 11  2020 usr.sbin.rsyslogd
+-rw-r--r-- 1 root root  1482 Feb 10  2023 usr.sbin.tcpdump
+
+═╣ Hashes inside passwd file? ........... No
+═╣ Writable passwd file? ................ No                                                                                                                                                                                                
+═╣ Credentials in fstab/mtab? ........... No                                                                                                                                                                                                
+═╣ Can I read shadow files? ............. No                                                                                                                                                                                                
+═╣ Can I read shadow plists? ............ No                                                                                                                                                                                                
+═╣ Can I write shadow plists? ........... No                                                                                                                                                                                                
+═╣ Can I read opasswd file? ............. No                                                                                                                                                                                                
+═╣ Can I write in network-scripts? ...... No                                                                                                                                                                                                
+═╣ Can I read root folder? .............. No                                                                                                                                                                                                
+                                                                                                                                                                                                                                            
+╔══════════╣ Searching root files in home dirs (limit 30)
+/home/                                                                                                                                                                                                                                      
+/root/
+/var/www
+/var/www/html/grav-admin/user/data/scheduler
+/var/www/html/grav-admin/user/data/scheduler/status.yaml
+/var/www/html/grav-admin/cache/doctrine/fe866161
+/var/www/html/grav-admin/cache/doctrine/fe866161/cf
+/var/www/html/grav-admin/cache/doctrine/fe866161/cf/672d66653836363136315b30373130376664333264313132636433656130373435633633636131333764365d5b315d.doctrinecache.data
+/var/www/html/grav-admin/cache/doctrine/c10f8065
+/var/www/html/grav-admin/cache/doctrine/c10f8065/e1
+/var/www/html/grav-admin/cache/doctrine/c10f8065/e1/672d63313066383036355b31666638326638393639663235613262643964613934363664643530636436365d5b315d.doctrinecache.data
+/var/www/html/grav-admin/cache/doctrine/2053d3bd
+/var/www/html/grav-admin/cache/doctrine/2053d3bd/54
+/var/www/html/grav-admin/cache/doctrine/2053d3bd/54/672d32303533643362645b34666132633631616432646135633237333664646137326465353565313831335d5b315d.doctrinecache.data
+/var/www/html/grav-admin/cache/doctrine/c10f608a
+/var/www/html/grav-admin/cache/doctrine/c10f608a/54
+/var/www/html/grav-admin/cache/doctrine/c10f608a/54/672d63313066363038615b30363131326134363261643231616537373433623031653162376638356563365d5b315d.doctrinecache.data
+/var/www/html/grav-admin/cache/doctrine/9ba7f8a0
+/var/www/html/grav-admin/cache/doctrine/9ba7f8a0/c6
+/var/www/html/grav-admin/cache/doctrine/9ba7f8a0/c6/672d39626137663861305b33353731653662383736353731316135613466383739363539643961646434335d5b315d.doctrinecache.data
+/var/www/html/grav-admin/cache/doctrine/9e4e2b1e
+/var/www/html/grav-admin/cache/doctrine/9e4e2b1e/97
+/var/www/html/grav-admin/cache/doctrine/9e4e2b1e/97/672d39653465326231655b34643765633233633039363766313862636337376436613534663334663666615d5b315d.doctrinecache.data
+/var/www/html/grav-admin/cache/doctrine/c2797b3b
+/var/www/html/grav-admin/cache/doctrine/c2797b3b/2b
+/var/www/html/grav-admin/cache/doctrine/c2797b3b/2b/672d63323739376233625b39373034666233633639336132383461613964383761646466393534636330625d5b315d.doctrinecache.data
+/var/www/html/grav-admin/cache/doctrine/1870d67c
+/var/www/html/grav-admin/cache/doctrine/1870d67c/58
+/var/www/html/grav-admin/cache/doctrine/1870d67c/58/672d31383730643637635b66376463616231363961353733396266663636626436303839323932316631325d5b315d.doctrinecache.data
+/var/www/html/grav-admin/cache/doctrine/d88fdc79
+
+╔══════════╣ Searching folders owned by me containing others files on it (limit 100)
+-rw-rw-r-- 1 root www-data 224 Oct 20 13:48 status.yaml                                                                                                                                                                                     
+total 4
+
+╔══════════╣ Readable files belonging to root and readable by me but not world readable
+                                                                                                                                                                                                                                            
+╔══════════╣ Interesting writable files owned by me or writable by everyone (not in Home) (max 200)
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#writable-files                                                                                                                                            
+/dev/mqueue                                                                                                                                                                                                                                 
+/dev/shm
+/run/lock
+/run/lock/apache2
+/run/screen
+/snap/core20/1611/run/lock
+/snap/core20/1611/tmp
+/snap/core20/1611/var/tmp
+/snap/core20/1852/run/lock
+/snap/core20/1852/tmp
+/snap/core20/1852/var/tmp
+/tmp
+/tmp/.font-unix
+/tmp/.ICE-unix
+/tmp/linpeas.sh
+/tmp/.Test-unix
+/tmp/.X11-unix
+#)You_can_write_even_more_files_inside_last_directory
+
+/var/cache/apache2/mod_cache_disk
+/var/crash
+/var/lib/php/sessions
+/var/tmp
+
+╔══════════╣ Interesting GROUP writable files (not in Home) (max 200)
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#writable-files                                                                                                                                            
+  Group www-data:                                                                                                                                                                                                                           
+/tmp/linpeas.sh                                                                                                                                                                                                                             
+/tmp/shell.sh
+
+
+
+
+
+
+
+www-data@gravity:/tmp$

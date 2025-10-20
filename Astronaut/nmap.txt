@@ -1,0 +1,106 @@
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/astronaut]
+└─$ nmap -vvv -T5 -Pn 192.168.164.12 -p- -A -oN nmap.txt
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-10-20 08:04 EDT
+NSE: Loaded 157 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 08:04
+Completed NSE at 08:04, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 08:04
+Completed NSE at 08:04, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 08:04
+Completed NSE at 08:04, 0.00s elapsed
+Initiating Parallel DNS resolution of 1 host. at 08:04
+Completed Parallel DNS resolution of 1 host. at 08:04, 0.03s elapsed
+DNS resolution of 1 IPs took 0.03s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating SYN Stealth Scan at 08:04
+Scanning 192.168.164.12 [65535 ports]
+Discovered open port 80/tcp on 192.168.164.12
+Discovered open port 22/tcp on 192.168.164.12
+Completed SYN Stealth Scan at 08:04, 11.32s elapsed (65535 total ports)
+Initiating Service scan at 08:04
+Scanning 2 services on 192.168.164.12
+Completed Service scan at 08:04, 6.09s elapsed (2 services on 1 host)
+Initiating OS detection (try #1) against 192.168.164.12
+Initiating Traceroute at 08:04
+Completed Traceroute at 08:04, 0.03s elapsed
+Initiating Parallel DNS resolution of 4 hosts. at 08:04
+Completed Parallel DNS resolution of 4 hosts. at 08:04, 0.03s elapsed
+DNS resolution of 4 IPs took 0.03s. Mode: Async [#: 1, OK: 0, NX: 4, DR: 0, SF: 0, TR: 4, CN: 0]
+NSE: Script scanning 192.168.164.12.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 08:04
+Completed NSE at 08:04, 1.19s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 08:04
+Completed NSE at 08:04, 0.13s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 08:04
+Completed NSE at 08:04, 0.00s elapsed
+Nmap scan report for 192.168.164.12
+Host is up, received user-set (0.028s latency).
+Scanned at 2025-10-20 08:04:39 EDT for 20s
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE REASON         VERSION
+22/tcp open  ssh     syn-ack ttl 61 OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 98:4e:5d:e1:e6:97:29:6f:d9:e0:d4:82:a8:f6:4f:3f (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCmPOfERLKCxx+ufQz7eRTNuEEkJ+GX/hKPNPpCWlTiTgegmjYoXQ7MA5ibTRoJ6vxpPEggzNszJKbBrSVAbRuT2sBg4o7ywiGUy7vsDBpObMrBMsdKuue3gpkaNF8DL2pB3v/XAxtavq1Mh4vz4yj99cc2pX1GhSjpQTWlsK8Rl9DmBKp7t0XxEWwq3juQ9JiN5yAttMrbTDjwMNxcipsYv0pMudDBE6g4gQyiZGwuUfBn+HirxnfRr7KkxmBaEpZgukXSJ7fXYgpQVgNP2cvd2sy/PYe0kL7lOfYwG/DSLWV917RPIdsPPQYr+rqrBL7XQA2Qll30Ms9iAX1m9S6pT/vkaw6JQCgDwFSwPXrknf627jCS7vQ8mh8UL07nPO7Hkko3fnHIcxyJggi/BoAAi3GseOl7vCZl28+waWlNdbR8gaiZhDR1rLvimcm3pg3nv9m+0qfVRIs9fxq97cOEFeXhaGHXvQL6LYGK14ZG+jVXtPavID6txymiBOUsj8M=
+|   256 57:23:57:1f:fd:77:06:be:25:66:61:14:6d:ae:5e:98 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAweAzke7+zPt3Untb06RlI4MEp+vsEJICUG+0GgPMp+vxOdxEhcsVY0VGyuC+plTRlqNi0zNv1Y0Jj0BYRMSUw=
+|   256 c7:9b:aa:d5:a6:33:35:91:34:1e:ef:cf:61:a8:30:1c (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPJP5z2Scxa02tfhI1SClflg5QtVdhMImHwY7GugVtfY
+80/tcp open  http    syn-ack ttl 61 Apache httpd 2.4.41
+| http-ls: Volume /
+| SIZE  TIME              FILENAME
+| -     2021-03-17 17:46  grav-admin/
+|_
+| http-methods: 
+|_  Supported Methods: POST OPTIONS HEAD GET
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Index of /
+Device type: general purpose|router
+Running: Linux 5.X, MikroTik RouterOS 7.X
+OS CPE: cpe:/o:linux:linux_kernel:5 cpe:/o:mikrotik:routeros:7 cpe:/o:linux:linux_kernel:5.6.3
+OS details: Linux 5.0 - 5.14, MikroTik RouterOS 7.2 - 7.5 (Linux 5.6.3)
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=10/20%OT=22%CT=1%CU=40566%PV=Y%DS=4%DC=T%G=N%TM=68F625
+OS:6B%P=aarch64-unknown-linux-gnu)SEQ(SP=103%GCD=1%ISR=10E%TI=Z%CI=Z%II=I%T
+OS:S=A)OPS(O1=M578ST11NW7%O2=M578ST11NW7%O3=M578NNT11NW7%O4=M578ST11NW7%O5=
+OS:M578ST11NW7%O6=M578ST11)WIN(W1=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE88%W6=F
+OS:E88)ECN(R=Y%DF=Y%T=40%W=FAF0%O=M578NNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A
+OS:=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%
+OS:Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=
+OS:A%A=Z%F=R%O=%RD=0%Q=)T7(R=N)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%R
+OS:IPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Uptime guess: 29.770 days (since Sat Sep 20 13:36:45 2025)
+Network Distance: 4 hops
+TCP Sequence Prediction: Difficulty=259 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: Host: 127.0.0.1; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 256/tcp)
+HOP RTT      ADDRESS
+1   30.39 ms 192.168.45.1
+2   28.72 ms 192.168.45.254
+3   28.77 ms 192.168.251.1
+4   28.87 ms 192.168.164.12
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 08:04
+Completed NSE at 08:04, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 08:04
+Completed NSE at 08:04, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 08:04
+Completed NSE at 08:04, 0.00s elapsed
+Read data files from: /usr/share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 20.34 seconds
+           Raw packets sent: 65571 (2.886MB) | Rcvd: 65559 (2.623MB)
