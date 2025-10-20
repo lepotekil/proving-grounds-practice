@@ -1,0 +1,682 @@
+charles@pelican:~$ ./linpeas.sh
+./linpeas.sh
+
+
+
+                            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+                    ▄▄▄▄▄▄▄             ▄▄▄▄▄▄▄▄
+             ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄
+         ▄▄▄▄     ▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄
+         ▄    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄          ▄▄▄▄▄▄               ▄▄▄▄▄▄ ▄
+         ▄▄▄▄▄▄              ▄▄▄▄▄▄▄▄                 ▄▄▄▄ 
+         ▄▄                  ▄▄▄ ▄▄▄▄▄                  ▄▄▄
+         ▄▄                ▄▄▄▄▄▄▄▄▄▄▄▄                  ▄▄
+         ▄            ▄▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ▄▄
+         ▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄                                ▄▄▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄                       ▄▄▄▄▄▄     ▄▄▄▄
+         ▄▄▄▄   ▄▄▄▄▄                       ▄▄▄▄▄      ▄ ▄▄
+         ▄▄▄▄▄  ▄▄▄▄▄        ▄▄▄▄▄▄▄        ▄▄▄▄▄     ▄▄▄▄▄
+         ▄▄▄▄▄▄  ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄   ▄▄▄▄▄ 
+          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄        ▄          ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ 
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄                       ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄                         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+          ▀▀▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▀▀▀▀▀▀
+               ▀▀▀▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▀▀
+                     ▀▀▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀▀▀
+
+    /---------------------------------------------------------------------------------\
+    |                             Do you like PEASS?                                  |
+    |---------------------------------------------------------------------------------|
+    |         Learn Cloud Hacking       :     https://training.hacktricks.xyz         |
+    |         Follow on Twitter         :     @hacktricks_live                        |
+    |         Respect on HTB            :     SirBroccoli                             |
+    |---------------------------------------------------------------------------------|
+    |                                 Thank you!                                      |
+    \---------------------------------------------------------------------------------/
+          LinPEAS-ng by carlospolop
+
+ADVISORY: This script should be used for authorized penetration testing and/or educational purposes only. Any misuse of this software will not be the responsibility of the author or of any other collaborator. Use it at your own computers and/or with the computer owner's permission.
+
+Linux Privesc Checklist: https://book.hacktricks.wiki/en/linux-hardening/linux-privilege-escalation-checklist.html
+ LEGEND:                                                                                                                                                                                                                                    
+  RED/YELLOW: 95% a PE vector
+  RED: You should take a look to it
+  LightCyan: Users with console
+  Blue: Users without console & mounted devs
+  Green: Common things (users, groups, SUID/SGID, mounts, .sh scripts, cronjobs) 
+  LightMagenta: Your username
+
+ Starting LinPEAS. Caching Writable Folders...
+                               ╔═══════════════════╗
+═══════════════════════════════╣ Basic information ╠═══════════════════════════════                                                                                                                                                         
+                               ╚═══════════════════╝                                                                                                                                                                                        
+OS: Linux version 4.19.0-10-amd64 (debian-kernel@lists.debian.org) (gcc version 8.3.0 (Debian 8.3.0-6)) #1 SMP Debian 4.19.132-1 (2020-07-24)
+User & Groups: uid=1000(charles) gid=1000(charles) groups=1000(charles)
+Hostname: pelican
+
+[+] /usr/bin/ping is available for network discovery (LinPEAS can discover hosts, learn more with -h)
+[+] /usr/bin/bash is available for network discovery, port scanning and port forwarding (LinPEAS can discover hosts, scan ports, and forward ports. Learn more with -h)                                                                     
+[+] /usr/bin/nc is available for network discovery & port scanning (LinPEAS can discover hosts and scan ports, learn more with -h)                                                                                                          
+                                                                                                                                                                                                                                            
+
+Caching directories . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . DONE
+                                                                                                                                                                                                                                            
+                              ╔════════════════════╗
+══════════════════════════════╣ System Information ╠══════════════════════════════                                                                                                                                                          
+                              ╚════════════════════╝                                                                                                                                                                                        
+╔══════════╣ Operative system
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#kernel-exploits                                                                                                                                           
+Linux version 4.19.0-10-amd64 (debian-kernel@lists.debian.org) (gcc version 8.3.0 (Debian 8.3.0-6)) #1 SMP Debian 4.19.132-1 (2020-07-24)                                                                                                   
+Distributor ID: Debian
+Description:    Debian GNU/Linux 10 (buster)
+Release:        10
+Codename:       buster
+
+╔══════════╣ Sudo version
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#sudo-version                                                                                                                                              
+Sudo version 1.8.27                                                                                                                                                                                                                         
+
+
+╔══════════╣ PATH
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#writable-path-abuses                                                                                                                                      
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin                                                                                                                                                                                
+
+╔══════════╣ Date & uptime
+Sun 19 Oct 2025 12:19:07 PM EDT                                                                                                                                                                                                             
+ 12:19:07 up 9 min,  0 users,  load average: 0.22, 0.06, 0.02
+
+╔══════════╣ Unmounted file-system?
+╚ Check if you can mount umounted devices                                                                                                                                                                                                   
+UUID=3d6bb9ca-e81c-47fe-b2c3-f6d706ee13bb /               ext4    errors=remount-ro 0       1                                                                                                                                               
+UUID=f24d8a56-9755-4a96-ad62-1d989efed3b5 none            swap    sw              0       0
+/dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0
+
+╔══════════╣ Any sd*/disk* disk in /dev? (limit 20)
+disk                                                                                                                                                                                                                                        
+sda
+sda1
+sda2
+sda5
+
+╔══════════╣ Environment
+╚ Any private information inside environment variables?                                                                                                                                                                                     
+USER=charles                                                                                                                                                                                                                                
+SHLVL=1
+HOME=/home/charles
+OLDPWD=/opt/zookeeper
+LOGNAME=charles
+_=./linpeas.sh
+TERM=xterm
+LANG=en_US.UTF-8
+SHELL=bash
+PWD=/home/charles
+
+╔══════════╣ Searching Signature verification failed in dmesg
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#dmesg-signature-verification-failed                                                                                                                       
+dmesg Not Found                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                            
+╔══════════╣ Executing Linux Exploit Suggester
+╚ https://github.com/mzet-/linux-exploit-suggester                                                                                                                                                                                          
+cat: write error: Broken pipe                                                                                                                                                                                                               
+cat: write error: Broken pipe
+cat: write error: Broken pipe
+cat: write error: Broken pipe
+[+] [CVE-2019-13272] PTRACE_TRACEME
+
+   Details: https://bugs.chromium.org/p/project-zero/issues/detail?id=1903
+   Exposure: highly probable
+   Tags: ubuntu=16.04{kernel:4.15.0-*},ubuntu=18.04{kernel:4.15.0-*},debian=9{kernel:4.9.0-*},[ debian=10{kernel:4.19.0-*} ],fedora=30{kernel:5.0.9-*}
+   Download URL: https://gitlab.com/exploit-database/exploitdb-bin-sploits/-/raw/main/bin-sploits/47133.zip
+   ext-url: https://raw.githubusercontent.com/bcoles/kernel-exploits/master/CVE-2019-13272/poc.c
+   Comments: Requires an active PolKit agent.
+
+[+] [CVE-2021-4034] PwnKit
+
+   Details: https://www.qualys.com/2022/01/25/cve-2021-4034/pwnkit.txt
+   Exposure: probable
+   Tags: ubuntu=10|11|12|13|14|15|16|17|18|19|20|21,[ debian=7|8|9|10|11 ],fedora,manjaro
+   Download URL: https://codeload.github.com/berdav/CVE-2021-4034/zip/main
+
+[+] [CVE-2021-3156] sudo Baron Samedit
+
+   Details: https://www.qualys.com/2021/01/26/cve-2021-3156/baron-samedit-heap-based-overflow-sudo.txt
+   Exposure: less probable
+   Tags: mint=19,ubuntu=18|20, debian=10
+   Download URL: https://codeload.github.com/blasty/CVE-2021-3156/zip/main
+
+[+] [CVE-2021-3156] sudo Baron Samedit 2
+
+   Details: https://www.qualys.com/2021/01/26/cve-2021-3156/baron-samedit-heap-based-overflow-sudo.txt
+   Exposure: less probable
+   Tags: centos=6|7|8,ubuntu=14|16|17|18|19|20, debian=9|10
+   Download URL: https://codeload.github.com/worawit/CVE-2021-3156/zip/main
+
+[+] [CVE-2021-22555] Netfilter heap out-of-bounds write
+
+   Details: https://google.github.io/security-research/pocs/linux/cve-2021-22555/writeup.html
+   Exposure: less probable
+   Tags: ubuntu=20.04{kernel:5.8.0-*}
+   Download URL: https://raw.githubusercontent.com/google/security-research/master/pocs/linux/cve-2021-22555/exploit.c
+   ext-url: https://raw.githubusercontent.com/bcoles/kernel-exploits/master/CVE-2021-22555/exploit.c
+   Comments: ip_tables kernel module must be loaded
+
+[+] [CVE-2019-18634] sudo pwfeedback
+
+   Details: https://dylankatz.com/Analysis-of-CVE-2019-18634/
+   Exposure: less probable
+   Tags: mint=19
+   Download URL: https://github.com/saleemrashid/sudo-cve-2019-18634/raw/master/exploit.c
+   Comments: sudo configuration requires pwfeedback to be enabled.
+
+
+╔══════════╣ Protections
+═╣ AppArmor enabled? .............. You do not have enough privilege to read the profile set.                                                                                                                                               
+apparmor module is loaded.
+═╣ AppArmor profile? .............. unconfined
+═╣ is linuxONE? ................... s390x Not Found
+═╣ grsecurity present? ............ grsecurity Not Found                                                                                                                                                                                    
+═╣ PaX bins present? .............. PaX Not Found                                                                                                                                                                                           
+═╣ Execshield enabled? ............ Execshield Not Found                                                                                                                                                                                    
+═╣ SELinux enabled? ............... sestatus Not Found                                                                                                                                                                                      
+═╣ Seccomp enabled? ............... disabled                                                                                                                                                                                                
+═╣ User namespace? ................ enabled
+═╣ Cgroup2 enabled? ............... enabled
+═╣ Is ASLR enabled? ............... Yes
+═╣ Printer? ....................... No
+═╣ Is this a virtual machine? ..... Yes (vmware)                                                                                                                                                                                            
+
+╔══════════╣ Kernel Modules Information
+══╣ Kernel modules with weak perms?                                                                                                                                                                                                         
+                                                                                                                                                                                                                                            
+══╣ Kernel modules loadable? 
+Modules can be loaded                                                                                                                                                                                                                       
+
+
+
+                                   ╔═══════════╗
+═══════════════════════════════════╣ Container ╠═══════════════════════════════════                                                                                                                                                         
+                                   ╚═══════════╝                                                                                                                                                                                            
+╔══════════╣ Container related tools present (if any):
+/usr/sbin/apparmor_parser                                                                                                                                                                                                                   
+/usr/bin/nsenter
+/usr/bin/unshare
+/usr/sbin/chroot
+/usr/sbin/capsh
+/usr/sbin/setcap
+/usr/sbin/getcap
+
+╔══════════╣ Container details
+═╣ Is this a container? ........... No                                                                                                                                                                                                      
+═╣ Any running containers? ........ No                                                                                                                                                                                                      
+                                                                                                                                                                                                                                            
+
+
+                                     ╔═══════╗
+═════════════════════════════════════╣ Cloud ╠═════════════════════════════════════                                                                                                                                                         
+                                     ╚═══════╝                                                                                                                                                                                              
+Learn and practice cloud hacking techniques in https://training.hacktricks.xyz
+                                                                                                                                                                                                                                            
+═╣ GCP Virtual Machine? ................. No
+═╣ GCP Cloud Funtion? ................... No
+═╣ AWS ECS? ............................. No
+═╣ AWS EC2? ............................. No
+═╣ AWS EC2 Beanstalk? ................... No
+═╣ AWS Lambda? .......................... No
+═╣ AWS Codebuild? ....................... No
+═╣ DO Droplet? .......................... No
+═╣ IBM Cloud VM? ........................ No
+═╣ Azure VM or Az metadata? ............. No
+═╣ Azure APP or IDENTITY_ENDPOINT? ...... No
+═╣ Azure Automation Account? ............ No
+═╣ Aliyun ECS? .......................... No
+═╣ Tencent CVM? ......................... No
+
+
+
+                ╔════════════════════════════════════════════════╗
+════════════════╣ Processes, Crons, Timers, Services and Sockets ╠════════════════                                                                                                                                                          
+                ╚════════════════════════════════════════════════╝                                                                                                                                                                          
+╔══════════╣ Running processes (cleaned)
+╚ Check weird & unexpected processes run by root: https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#processes                                                                                                 
+root         1  0.0  0.5 103980 10300 ?        Ss   12:09   0:00 /sbin/init                                                                                                                                                                 
+root       256  0.0  0.3  43112  8128 ?        Ss   12:09   0:00 /lib/systemd/systemd-journald
+root       278  0.0  0.2  22476  5040 ?        Ss   12:09   0:00 /lib/systemd/systemd-udevd
+systemd+   312  0.0  0.3  95148  6620 ?        Ssl  12:09   0:00 /lib/systemd/systemd-timesyncd
+  └─(Caps) 0x0000000002000000=cap_sys_time
+root       314  0.0  0.5  48220 10836 ?        Ss   12:09   0:00 /usr/bin/VGAuthService
+root       334  0.0  0.6 123176 12608 ?        Ssl  12:09   0:00 /usr/bin/vmtoolsd
+root       421  0.0  0.3 225824  6412 ?        Ssl  12:09   0:00 /usr/sbin/rsyslogd -n -iNONE
+message+   422  0.0  0.2   9696  4888 ?        Ss   12:09   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+  └─(Caps) 0x0000000020000000=cap_audit_write
+root       424  0.0  0.2  19768  5200 ?        Ss   12:09   0:00 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+root       428  0.0  0.1   8504  2692 ?        Ss   12:09   0:00 /usr/sbin/cron -f
+root       444  0.0  0.1   9468  2344 ?        S    12:09   0:00  _ /usr/sbin/CRON -f
+root       473  0.0  0.0   2388  1608 ?        Ss   12:09   0:00      _ /bin/sh -c while true; do chown -R charles:charles /opt/zookeeper && chown -R charles:charles /opt/exhibitor && sleep 1; done
+root      7852  0.0  0.0   5260   740 ?        S    12:22   0:00          _ sleep 1
+root       430  0.0  0.6 398428 13844 ?        Ssl  12:09   0:00 /usr/lib/udisks2/udisksd
+root       440  0.0  0.5 318328 12168 ?        Ssl  12:09   0:00 /usr/sbin/ModemManager --filter-policy=strict
+root       448  0.0  0.3  19532  7256 ?        Ss   12:09   0:00 /lib/systemd/systemd-logind
+avahi      482  0.0  0.0   8156   320 ?        S    12:09   0:00  _ avahi-daemon: chroot helper
+root       483  0.0  0.5 184976 10996 ?        Ssl  12:09   0:00 /usr/sbin/cups-browsed
+root       490  0.0  0.0   2276    72 ?        Ss   12:09   0:00 /usr/bin/password-store
+root       491  0.0  0.4 235840  8896 ?        Ssl  12:09   0:00 /usr/lib/policykit-1/polkitd --no-debug
+charles    501  0.5  5.2 2566300 106848 ?      Ssl  12:09   0:04 /usr/bin/java -jar /opt/exhibitor/exhibitor-1.0-jar-with-dependencies.jar -c file
+root       525  0.0  0.3 313364  7068 ?        Ssl  12:09   0:00 /usr/sbin/lightdm
+root       556  0.0  2.2 224980 45924 tty7     Ssl+ 12:09   0:00  _ /usr/lib/xorg/Xorg :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+root       656  0.0  0.3 166792  7144 ?        Sl   12:09   0:00  _ lightdm --session-child 18 21
+lightdm    672  0.0  3.5 504864 72480 ?        Ssl  12:09   0:00  |   _ /usr/sbin/lightdm-gtk-greeter
+root       714  0.0  0.2  18748  5172 ?        S    12:09   0:00  _ lightdm --session-child 14 21
+root       529  0.0  0.3  15852  6476 ?        Ss   12:09   0:00 /usr/sbin/sshd -D
+root       555  0.0  0.0   5612  1488 tty1     Ss+  12:09   0:00 /sbin/agetty -o -p -- u --noclear tty1 linux
+root       558  0.0  0.0  69740  1700 ?        Ss   12:09   0:00 nginx: master process /usr/sbin/nginx -g daemon[0m on; master_process on;
+www-data   560  0.0  0.2  70408  5944 ?        S    12:09   0:00  _ nginx: worker process
+root       640  0.0  0.4 102808  8276 ?        Ssl  12:09   0:00 /usr/sbin/cupsd -l
+lightdm    660  0.0  0.4  21268  9308 ?        Ss   12:09   0:00 /lib/systemd/systemd --user
+lightdm    661  0.0  0.1 105280  2484 ?        S    12:09   0:00  _ (sd-pam)
+lightdm    679  0.0  0.2   8960  4260 ?        Ss   12:09   0:00  _ /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+lightdm    680  0.0  0.2 312452  6120 ?        Ssl  12:09   0:00  _ /usr/lib/at-spi2-core/at-spi-bus-launcher
+lightdm    685  0.0  0.1   8840  3740 ?        S    12:09   0:00  |   _ /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+lightdm    687  0.0  0.3 174008  6788 ?        Sl   12:09   0:00  _ /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+lightdm    689  0.0  0.3 239980  6992 ?        Ssl  12:09   0:00  _ /usr/lib/gvfs/gvfsd
+root      1317  0.0  1.0  50128 21180 ?        Ss   12:11   0:00 /usr/sbin/smbd --foreground --no-process-group
+root      1319  0.0  0.2  46672  5964 ?        S    12:11   0:00  _ /usr/sbin/smbd --foreground --no-process-group
+root      1320  0.0  0.2  46664  4252 ?        S    12:11   0:00  _ /usr/sbin/smbd --foreground --no-process-group
+root      1322  0.0  0.3  50136  6688 ?        S    12:11   0:00  _ /usr/sbin/smbd --foreground --no-process-group
+root      1624  0.0  0.7 258856 15148 ?        Ssl  12:11   0:00 /usr/sbin/NetworkManager --no-daemon[0m
+charles   2242  0.0  0.0   2388   756 ?        S    12:13   0:00 sh
+charles   2434  0.0  0.3  15308  7396 ?        S    12:14   0:00  _ python -c import pty; pty.spawn("/bin/bash")
+charles   2435  0.0  0.2   7620  4504 pts/0    Ss   12:14   0:00      _ /bin/bash
+charles   3802  0.0  0.1   3400  2680 pts/0    S+   12:18   0:00          _ /bin/sh ./linpeas.sh
+charles   7922  0.0  0.0   3400  1104 pts/0    S+   12:22   0:00              _ /bin/sh ./linpeas.sh
+charles   7926  0.0  0.1  10784  3144 pts/0    R+   12:22   0:00              |   _ ps fauxwww
+charles   7925  0.0  0.0   3400  1104 pts/0    S+   12:22   0:00              _ /bin/sh ./linpeas.sh
+charles   2248  0.2  3.3 2546896 67440 ?       Sl   12:13   0:01 java -Dzookeeper.log.dir=. -Dzookeeper.root.logger=INFO,CONSOLE -cp /opt/zookeeper/bin/../build/classes:/opt/zookeeper/bin/../build/lib/*.jar:/opt/zookeeper/bin/../lib/slf4j-log4j12-1.6.1.jar:/opt/zookeeper/bin/../lib/slf4j-api-1.6.1.jar:/opt/zookeeper/bin/../lib/netty-3.7.0.Final.jar:/opt/zookeeper/bin/../lib/log4j-1.2.16.jar:/opt/zookeeper/bin/../lib/jline-0.9.94.jar:/opt/zookeeper/bin/../zookeeper-3.4.6.jar:/opt/zookeeper/bin/../src/java/lib/*.jar:/opt/zookeeper/bin/../conf: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.local.only=false org.apache.zookeeper.server.quorum.QuorumPeerMain /opt/zookeeper/bin/../conf/zoo.cfg
+root      2619  0.0  0.1   5344  2288 ?        Ss   12:14   0:00 /usr/sbin/anacron -d -q -s
+
+╔══════════╣ Processes with unusual configurations
+Process 483 (root) - /usr/sbin/cups-browsed                                                                                                                                                                                                 
+SELinux context: /usr/sbin/cups-browsed (enforce)
+
+Process 640 (root) - /usr/sbin/cupsd -l 
+SELinux context: /usr/sbin/cupsd (enforce)
+
+
+╔══════════╣ Processes with credentials in memory (root req)
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#credentials-from-process-memory                                                                                                                           
+gdm-password Not Found                                                                                                                                                                                                                      
+gnome-keyring-daemon Not Found                                                                                                                                                                                                              
+lightdm process found (dump creds from memory as root)                                                                                                                                                                                      
+vsftpd Not Found
+apache2 Not Found                                                                                                                                                                                                                           
+sshd: Not Found                                                                                                                                                                                                                             
+mysql Not Found                                                                                                                                                                                                                             
+postgres Not Found                                                                                                                                                                                                                          
+redis-server Not Found                                                                                                                                                                                                                      
+mongod Not Found                                                                                                                                                                                                                            
+memcached Not Found                                                                                                                                                                                                                         
+elasticsearch Not Found                                                                                                                                                                                                                     
+jenkins Not Found                                                                                                                                                                                                                           
+tomcat Not Found                                                                                                                                                                                                                            
+nginx process found (dump creds from memory as root)                                                                                                                                                                                        
+php-fpm Not Found
+supervisord Not Found                                                                                                                                                                                                                       
+vncserver Not Found                                                                                                                                                                                                                         
+xrdp Not Found                                                                                                                                                                                                                              
+teamviewer Not Found                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                            
+╔══════════╣ Opened Files by processes
+Process 501 (charles) - /usr/bin/java -jar /opt/exhibitor/exhibitor-1.0-jar-with-dependencies.jar -c file                                                                                                                                   
+  └─ Has open files:
+    └─ pipe:[25567]
+    └─ pipe:[25569]
+    └─ /usr/lib/jvm/java-11-openjdk-amd64/lib/modules
+    └─ /usr/share/java/java-atk-wrapper.jar
+    └─ /opt/exhibitor/exhibitor-1.0-jar-with-dependencies.jar
+    └─ /dev/random
+    └─ /dev/urandom
+Process 2242 (charles) - sh 
+  └─ Has open files:
+    └─ pipe:[25569]
+Process 2248 (charles) - java -Dzookeeper.log.dir=. -Dzookeeper.root.logger=INFO,CONSOLE -cp /opt/zookeeper/bin/../build/clas
+  └─ Has open files:
+    └─ /opt/zookeeper/zookeeper.out
+    └─ /opt/zookeeper/lib/jline-0.9.94.jar
+    └─ /opt/zookeeper/zookeeper-3.4.6.jar
+    └─ /dev/random
+    └─ /dev/urandom
+    └─ pipe:[25633]
+    └─ /usr/lib/jvm/java-11-openjdk-amd64/lib/modules
+    └─ /usr/share/java/java-atk-wrapper.jar
+    └─ /opt/zookeeper/lib/slf4j-log4j12-1.6.1.jar
+    └─ /opt/zookeeper/lib/slf4j-api-1.6.1.jar
+    └─ /opt/zookeeper/lib/netty-3.7.0.Final.jar
+    └─ /opt/zookeeper/lib/log4j-1.2.16.jar
+Process 2434 (charles) - python -c import pty; pty.spawn("/bin/bash") 
+  └─ Has open files:
+    └─ pipe:[25569]
+    └─ /dev/ptmx
+Process 2435 (charles) - /bin/bash 
+  └─ Has open files:
+    └─ /dev/pts/0
+
+╔══════════╣ Processes with memory-mapped credential files
+                                                                                                                                                                                                                                            
+╔══════════╣ Processes whose PPID belongs to a different user (not root)
+╚ You will know if a user can somehow spawn processes as a different user                                                                                                                                                                   
+                                                                                                                                                                                                                                            
+╔══════════╣ Files opened by processes belonging to other users
+╚ This is usually empty because of the lack of privileges to read other user processes information                                                                                                                                          
+                                                                                                                                                                                                                                            
+╔══════════╣ Check for vulnerable cron jobs
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#scheduledcron-jobs                                                                                                                                        
+══╣ Cron jobs list                                                                                                                                                                                                                          
+/usr/bin/crontab                                                                                                                                                                                                                            
+incrontab Not Found
+-rw-r--r-- 1 root root    1209 Sep 10  2020 /etc/crontab                                                                                                                                                                                    
+
+/etc/cron.d:
+total 16
+drwxr-xr-x   2 root root 4096 Sep  9  2020 .
+drwxr-xr-x 120 root root 4096 Oct 19 12:11 ..
+-rw-r--r--   1 root root  285 May 19  2019 anacron
+-rw-r--r--   1 root root  102 Oct 11  2019 .placeholder
+
+/etc/cron.daily:
+total 44
+drwxr-xr-x   2 root root 4096 Sep 10  2020 .
+drwxr-xr-x 120 root root 4096 Oct 19 12:11 ..
+-rwxr-xr-x   1 root root  311 May 19  2019 0anacron
+-rwxr-xr-x   1 root root 1478 May 28  2019 apt-compat
+-rwxr-xr-x   1 root root  355 Dec 29  2017 bsdmainutils
+-rwxr-xr-x   1 root root 1187 Apr 18  2019 dpkg
+-rwxr-xr-x   1 root root  377 Aug 28  2018 logrotate
+-rwxr-xr-x   1 root root 1123 Feb 10  2019 man-db
+-rwxr-xr-x   1 root root  249 Sep 27  2017 passwd
+-rw-r--r--   1 root root  102 Oct 11  2019 .placeholder
+-rwxr-xr-x   1 root root  383 Sep  2  2019 samba
+
+/etc/cron.hourly:
+total 12
+drwxr-xr-x   2 root root 4096 Sep  9  2020 .
+drwxr-xr-x 120 root root 4096 Oct 19 12:11 ..
+-rw-r--r--   1 root root  102 Oct 11  2019 .placeholder
+
+/etc/cron.monthly:
+total 16
+drwxr-xr-x   2 root root 4096 Sep  9  2020 .
+drwxr-xr-x 120 root root 4096 Oct 19 12:11 ..
+-rwxr-xr-x   1 root root  313 May 19  2019 0anacron
+-rw-r--r--   1 root root  102 Oct 11  2019 .placeholder
+
+/etc/cron.weekly:
+total 20
+drwxr-xr-x   2 root root 4096 Sep  9  2020 .
+drwxr-xr-x 120 root root 4096 Oct 19 12:11 ..
+-rwxr-xr-x   1 root root  312 May 19  2019 0anacron
+-rwxr-xr-x   1 root root  813 Feb 10  2019 man-db
+-rw-r--r--   1 root root  102 Oct 11  2019 .placeholder
+
+/var/spool/anacron:
+total 20
+drwxr-xr-x 2 root root 4096 Sep 10  2020 .
+drwxr-xr-x 8 root root 4096 Sep 10  2020 ..
+-rw------- 1 root root    9 Oct 19 12:19 cron.daily
+-rw------- 1 root root    9 Oct 19 12:14 cron.monthly
+-rw------- 1 root root    9 Oct 19 12:14 cron.weekly
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+@reboot         root    /usr/bin/password-store
+@reboot         root    while true; do chown -R charles:charles /opt/zookeeper && chown -R charles:charles /opt/exhibitor && sleep 1; done
+17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+HOME=/root
+LOGNAME=root
+
+1       5       cron.daily      run-parts --report /etc/cron.daily
+7       10      cron.weekly     run-parts --report /etc/cron.weekly
+@monthly        15      cron.monthly    run-parts --report /etc/cron.monthly
+
+══╣ Checking for specific cron jobs vulnerabilities
+Checking cron directories...                                                                                                                                                                                                                
+
+╔══════════╣ System timers
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#timers                                                                                                                                                    
+══╣ Active timers:                                                                                                                                                                                                                          
+NEXT                         LEFT         LAST                         PASSED    UNIT                         ACTIVATES                                                                                                                     
+Sun 2025-10-19 12:24:26 EDT  2min 7s left n/a                          n/a       systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
+Sun 2025-10-19 23:13:22 EDT  10h left     Sun 2025-10-19 12:11:42 EDT  10min ago apt-daily.timer              apt-daily.service
+Mon 2025-10-20 00:00:00 EDT  11h left     Sun 2025-10-19 12:11:42 EDT  10min ago logrotate.timer              logrotate.service
+Mon 2025-10-20 00:00:00 EDT  11h left     Sun 2025-10-19 12:11:42 EDT  10min ago man-db.timer                 man-db.service
+Mon 2025-10-20 06:02:52 EDT  17h left     Sun 2025-10-19 12:11:42 EDT  10min ago apt-daily-upgrade.timer      apt-daily-upgrade.service
+n/a                          n/a          Sun 2025-10-19 12:14:28 EDT  7min ago  anacron.timer                anacron.service
+══╣ Disabled timers:
+══╣ Additional timer files:                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                            
+╔══════════╣ Services and Service Files
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#services                                                                                                                                                  
+                                                                                                                                                                                                                                            
+══╣ Active services:
+anacron.service                    loaded active running Run anacron jobs                                                                                                                                                                   
+apparmor.service                   loaded active exited  Load AppArmor profiles
+./linpeas.sh: 3944: local: /lib/apparmor/apparmor: bad variable name
+ Not Found
+                                                                                                                                                                                                                                            
+══╣ Disabled services:
+console-getty.service                  disabled                                                                                                                                                                                             
+debug-shell.service                    disabled
+ifupdown-wait-online.service           disabled
+rtkit-daemon.service                   disabled
+serial-getty@.service                  disabled
+speech-dispatcher.service              disabled
+./linpeas.sh: 3944: local: /bin/kill: bad variable name
+ Not Found
+                                                                                                                                                                                                                                            
+══╣ Additional service files:
+./linpeas.sh: 3944: local: /usr/sbin/avahi-daemon: bad variable name                                                                                                                                                                        
+You can't write on systemd PATH
+
+╔══════════╣ Systemd Information
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#systemd-path---relative-paths                                                                                                                             
+═╣ Systemd version and vulnerabilities? .............. ═╣ Services running as root? .....                                                                                                                                                   
+═╣ Running services with dangerous capabilities? ... 
+═╣ Services with writable paths? . rsyslog.service: Uses relative path '-n' (from ExecStart=/usr/sbin/rsyslogd -n -iNONE)
+
+╔══════════╣ Systemd PATH
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#systemd-path---relative-paths                                                                                                                             
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin                                                                                                                                                                           
+
+╔══════════╣ Analyzing .socket files
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#sockets                                                                                                                                                   
+./linpeas.sh: 4207: local: /run/systemd/journal/socket: bad variable name                                                                                                                                                                   
+
+╔══════════╣ Unix Sockets Analysis
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#sockets                                                                                                                                                   
+/run/avahi-daemon/socket                                                                                                                                                                                                                    
+  └─(Read Write (Weak Permissions: 666) )
+  └─(Owned by root)
+/run/cups/cups.sock
+  └─(Read Write (Weak Permissions: 666) )
+  └─(Owned by root)
+/run/dbus/system_bus_socket
+  └─(Read Write (Weak Permissions: 666) )
+  └─(Owned by root)
+/run/NetworkManager/private-dhcp
+  └─(Read Execute )
+  └─(Owned by root)
+/run/systemd/fsck.progress
+/run/systemd/journal/dev-log
+  └─(Read Write (Weak Permissions: 666) )
+  └─(Owned by root)
+/run/systemd/journal/socket
+  └─(Read Write (Weak Permissions: 666) )
+  └─(Owned by root)
+/run/systemd/journal/stdout
+  └─(Read Write (Weak Permissions: 666) )
+  └─(Owned by root)
+/run/systemd/journal/syslog
+  └─(Read Write (Weak Permissions: 666) )
+  └─(Owned by root)
+/run/systemd/notify
+  └─(Read Write Execute (Weak Permissions: 777) )
+  └─(Owned by root)
+/run/systemd/private
+  └─(Read Write Execute (Weak Permissions: 777) )
+  └─(Owned by root)
+/run/udev/control
+/run/vmware/guestServicePipe
+  └─(Read Write (Weak Permissions: 666) )
+  └─(Owned by root)
+/tmp/.X11-unix/X0
+  └─(Read Write Execute (Weak Permissions: 777) )
+  └─(Owned by root)
+/var/run/dbus/system_bus_socket
+  └─(Read Write (Weak Permissions: 666) )
+  └─(Owned by root)
+/var/run/vmware/guestServicePipe
+  └─(Read Write (Weak Permissions: 666) )
+  └─(Owned by root)
+
+╔══════════╣ D-Bus Analysis
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#d-bus                                                                                                                                                     
+NAME                                       PID PROCESS         USER             CONNECTION    UNIT                      SESSION    DESCRIPTION                                                                                              
+:1.0                                       312 systemd-timesyn systemd-timesync :1.0          systemd-timesyncd.service -          -
+:1.12                                      448 systemd-logind  root             :1.12         systemd-logind.service    -          -
+:1.14                                      491 polkitd         root             :1.14         polkit.service            -          -
+:1.15                                      483 cups-browsed    root             :1.15         cups-browsed.service      -          -
+:1.18                                      483 cups-browsed    root             :1.18         cups-browsed.service      -          -
+:1.195                                   18477 busctl          charles          :1.195        exhibitor.service         -          -
+:1.2                                       424 wpa_supplicant  root             :1.2          wpa_supplicant.service    -          -
+:1.20                                      525 lightdm         root             :1.20         lightdm.service           -          -
+:1.26                                      556 Xorg            root             :1.26         lightdm.service           -          -
+:1.28                                      640 cupsd           root             :1.28         cups.service              -          -
+:1.29                                      640 cupsd           root             :1.29         cups.service              -          -
+:1.31                                      656 lightdm         root             :1.31         session-c1.scope          c1         -
+:1.37                                      660 systemd         lightdm          :1.37         user@112.service          -          -
+:1.47                                     1317 smbd            root             :1.47         smbd.service              -          -
+:1.5                                         1 systemd         root             :1.5          init.scope                -          -
+:1.6                                       453 avahi-daemon    avahi            :1.6          avahi-daemon.service      -          -
+:1.8                                       430 udisksd         root             :1.8          udisks2.service           -          -
+:1.82                                     1624 NetworkManager  root             :1.82         NetworkManager.service    -          -
+:1.9                                       440 ModemManager    root             :1.9          ModemManager.service      -          -
+fi.epitest.hostap.WPASupplicant            424 wpa_supplicant  root             :1.2          wpa_supplicant.service    -          -
+fi.w1.wpa_supplicant1                      424 wpa_supplicant  root             :1.2          wpa_supplicant.service    -          -
+org.freedesktop.Avahi                      453 avahi-daemon    avahi            :1.6          avahi-daemon.service      -          -
+org.freedesktop.ColorManager                 - -               -                (activatable) -                         -
+org.freedesktop.DBus                         1 systemd         root             -             init.scope                -          -
+org.freedesktop.DisplayManager             525 lightdm         root             :1.20         lightdm.service           -          -
+org.freedesktop.ModemManager1              440 ModemManager    root             :1.9          ModemManager.service      -          -
+org.freedesktop.NetworkManager            1624 NetworkManager  root             :1.82         NetworkManager.service    -          -
+org.freedesktop.PackageKit                   - -               -                (activatable) -                         -
+org.freedesktop.PolicyKit1                 491 polkitd         root             :1.14         polkit.service            -          -
+org.freedesktop.RealtimeKit1                 - -               -                (activatable) -                         -
+org.freedesktop.UDisks2                    430 udisksd         root             :1.8          udisks2.service           -          -
+org.freedesktop.UPower                       - -               -                (activatable) -                         -
+org.freedesktop.hostname1                    - -               -                (activatable) -                         -
+org.freedesktop.locale1                      - -               -                (activatable) -                         -
+org.freedesktop.login1                     448 systemd-logind  root             :1.12         systemd-logind.service    -          -
+org.freedesktop.network1                     - -               -                (activatable) -                         -
+org.freedesktop.nm_dispatcher                - -               -                (activatable) -                         -
+org.freedesktop.resolve1                     - -               -                (activatable) -                         -
+org.freedesktop.systemd1                     1 systemd         root             :1.5          init.scope                -          -
+org.freedesktop.timedate1                    - -               -                (activatable) -                         -
+org.freedesktop.timesync1                  312 systemd-timesyn systemd-timesync :1.0          systemd-timesyncd.service -          -
+org.opensuse.CupsPkHelper.Mechanism          - -               -                (activatable) -                         -
+
+╔══════════╣ D-Bus Configuration Files
+Analyzing /etc/dbus-1/system.d/avahi-dbus.conf:                                                                                                                                                                                             
+  └─(Weak user policy found)
+     └─   <policy user="avahi">
+  └─(Weak group policy found)
+     └─   <policy group="netdev">
+  └─(Allow rules in default context)
+             └─     <allow send_destination="org.freedesktop.Avahi"/>
+            <allow receive_sender="org.freedesktop.Avahi"/>
+Analyzing /etc/dbus-1/system.d/com.redhat.NewPrinterNotification.conf:
+  └─(Allow rules in default context)
+             └─                 <allow send_destination="com.redhat.NewPrinterNotification"
+                        <allow send_destination="com.redhat.NewPrinterNotification"
+Analyzing /etc/dbus-1/system.d/com.redhat.PrinterDriversInstaller.conf:
+  └─(Allow rules in default context)
+             └─                 <allow send_destination="com.redhat.PrinterDriversInstaller"
+                        <allow send_destination="com.redhat.PrinterDriversInstaller"
+Analyzing /etc/dbus-1/system.d/dnsmasq.conf:
+  └─(Weak user policy found)
+     └─         <policy user="dnsmasq">
+Analyzing /etc/dbus-1/system.d/org.freedesktop.DisplayManager.conf:
+  └─(Allow rules in default context)
+             └─     <allow send_destination="org.freedesktop.DisplayManager" send_interface="org.freedesktop.DBus.Properties"/>
+            <allow send_destination="org.freedesktop.DisplayManager" send_interface="org.freedesktop.DBus.Introspectable"/>
+            <allow send_destination="org.freedesktop.DisplayManager" send_interface="org.freedesktop.DisplayManager"/>
+            <allow send_destination="org.freedesktop.DisplayManager" send_interface="org.freedesktop.DisplayManager.Seat"/>
+            <allow send_destination="org.freedesktop.DisplayManager" send_interface="org.freedesktop.DisplayManager.Session"/>
+Analyzing /etc/dbus-1/system.d/org.freedesktop.ModemManager1.conf:
+  └─(Allow rules in default context)
+             └─     <!-- Methods listed here are explicitly allowed or PolicyKit protected.
+Analyzing /etc/dbus-1/system.d/org.freedesktop.PackageKit.conf:
+  └─(Allow rules in default context)
+             └─     <allow send_destination="org.freedesktop.PackageKit"
+            <allow send_destination="org.freedesktop.PackageKit"
+            <allow send_destination="org.freedesktop.PackageKit"
+Analyzing /etc/dbus-1/system.d/org.freedesktop.RealtimeKit1.conf:
+  └─(Weak user policy found)
+     └─   <policy user="rtkit">
+  └─(Allow rules in default context)
+             └─     <allow send_destination="org.freedesktop.RealtimeKit1"/>
+            <allow receive_sender="org.freedesktop.RealtimeKit1"/>
+Analyzing /etc/dbus-1/system.d/org.opensuse.CupsPkHelper.Mechanism.conf:
+  └─(Allow rules in default context)
+             └─     <allow send_destination="org.opensuse.CupsPkHelper.Mechanism"/>
+Analyzing /etc/dbus-1/system.d/pulseaudio-system.conf:
+  └─(Weak user policy found)
+     └─   <policy user="pulse">
+Analyzing /etc/dbus-1/system.d/wpa_supplicant.conf:
+  └─(Weak group policy found)
+     └─         <policy group="netdev">
+
+══╣ D-Bus Session Bus Analysis
+(Access to session bus available)                                                                                                                                                                                                           
+
+
+╔══════════╣ Legacy r-commands (rsh/rlogin/rexec) and host-based trust
+                                                                                                                                                                                                                                            
+══╣ Listening r-services (TCP 512-514)
+                                                                                                                                                                                                                                            
+══╣ systemd units exposing r-services
+rlogin|rsh|rexec units Not Found                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+══╣ inetd/xinetd configuration for r-services
+/etc/inetd.conf Not Found                                                                                                                                                                                                                   
+/etc/xinetd.d Not Found                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                            
+══╣ Installed r-service server packages
+  No related packages found via dpkg                                                                                                                                                                                                        
+
+══╣ /etc/hosts.equiv and /etc/shosts.equiv
+                                                                                                                                                                                                                                            
+══╣ Per-user .rhosts files
+.rhosts Not Found                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                            
+══╣ PAM rhosts authentication
+/etc/pam.d/rlogin|rsh Not Found                                                                                                                                                                                                             
+                                                                                                                                                                                                                                            
+══╣ SSH HostbasedAuthentication
+  HostbasedAuthentication no or not set                                                                                                                                                                                                     
+
+══╣ Potential DNS control indicators (local)
+  Not detected                                                                                                                                                                                                                              
+
+╔══════════╣ Crontab UI (root) misconfiguration checks
+╚ https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html#scheduledcron-jobs                                                                                                                                        
+crontab-ui Not Found
