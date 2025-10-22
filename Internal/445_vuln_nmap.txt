@@ -1,0 +1,99 @@
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/internal]
+└─$ nmap -vvv -T5 -Pn 192.168.192.40 -p445 --script vuln -A -oN 445_vuln_nmap.txt
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-10-22 10:51 EDT
+NSE: Loaded 151 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 2) scan.
+Initiating NSE at 10:51
+Completed NSE at 10:51, 10.01s elapsed
+NSE: Starting runlevel 2 (of 2) scan.
+Initiating NSE at 10:51
+Completed NSE at 10:51, 0.00s elapsed
+Initiating SYN Stealth Scan at 10:51
+Scanning internal.offsec (192.168.192.40) [1 port]
+Discovered open port 445/tcp on 192.168.192.40
+Completed SYN Stealth Scan at 10:51, 0.07s elapsed (1 total ports)
+Initiating Service scan at 10:51
+Scanning 1 service on internal.offsec (192.168.192.40)
+Completed Service scan at 10:51, 6.07s elapsed (1 service on 1 host)
+Initiating OS detection (try #1) against internal.offsec (192.168.192.40)
+Initiating Traceroute at 10:51
+Completed Traceroute at 10:51, 0.03s elapsed
+Initiating Parallel DNS resolution of 3 hosts. at 10:51
+Completed Parallel DNS resolution of 3 hosts. at 10:51, 0.03s elapsed
+DNS resolution of 3 IPs took 0.03s. Mode: Async [#: 1, OK: 0, NX: 3, DR: 0, SF: 0, TR: 3, CN: 0]
+NSE: Script scanning 192.168.192.40.
+NSE: Starting runlevel 1 (of 2) scan.
+Initiating NSE at 10:51
+NSE Timing: About 94.96% done; ETC: 10:52 (0:00:02 remaining)
+Completed NSE at 10:52, 39.20s elapsed
+NSE: Starting runlevel 2 (of 2) scan.
+Initiating NSE at 10:52
+Completed NSE at 10:52, 0.01s elapsed
+Nmap scan report for internal.offsec (192.168.192.40)
+Host is up, received user-set (0.027s latency).
+Scanned at 2025-10-22 10:51:28 EDT for 47s
+
+PORT    STATE SERVICE      REASON          VERSION
+445/tcp open  microsoft-ds syn-ack ttl 125 Microsoft Windows Server 2008 R2 microsoft-ds (workgroup: WORKGROUP)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose
+Running: Microsoft Windows 7|2008|8.1
+OS CPE: cpe:/o:microsoft:windows_7 cpe:/o:microsoft:windows_server_2008:r2 cpe:/o:microsoft:windows_8.1
+OS details: Microsoft Windows 7 SP1 or Windows Server 2008 R2 or Windows 8.1
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=10/22%OT=445%CT=%CU=42262%PV=Y%DS=4%DC=T%G=N%TM=68F8EF
+OS:9F%P=aarch64-unknown-linux-gnu)SEQ(SP=108%GCD=1%ISR=109%TI=I%CI=I%TS=7)O
+OS:PS(O1=M578NW8ST11%O2=M578NW8ST11%O3=M578NW8NNT11%O4=M578NW8ST11%O5=M578N
+OS:W8ST11%O6=M578ST11)WIN(W1=2000%W2=2000%W3=2000%W4=2000%W5=2000%W6=2000)E
+OS:CN(R=Y%DF=Y%T=80%W=2000%O=M578NW8NNS%CC=N%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S+%F
+OS:=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T5
+OS:(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S=A%A=O
+OS:%F=R%O=%RD=0%Q=)U1(R=Y%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=
+OS:G%RUD=G)IE(R=N)
+
+Uptime guess: 0.006 days (since Wed Oct 22 10:42:59 2025)
+Network Distance: 4 hops
+TCP Sequence Prediction: Difficulty=264 (Good luck!)
+IP ID Sequence Generation: Incremental
+Service Info: Host: INTERNAL; OS: Windows; CPE: cpe:/o:microsoft:windows_server_2008:r2
+
+Host script results:
+|_smb-vuln-ms10-054: false
+| smb-vuln-cve2009-3103: 
+|   VULNERABLE:
+|   SMBv2 exploit (CVE-2009-3103, Microsoft Security Advisory 975497)
+|     State: VULNERABLE
+|     IDs:  CVE:CVE-2009-3103
+|           Array index error in the SMBv2 protocol implementation in srv2.sys in Microsoft Windows Vista Gold, SP1, and SP2,
+|           Windows Server 2008 Gold and SP2, and Windows 7 RC allows remote attackers to execute arbitrary code or cause a
+|           denial of service (system crash) via an & (ampersand) character in a Process ID High header field in a NEGOTIATE
+|           PROTOCOL REQUEST packet, which triggers an attempted dereference of an out-of-bounds memory location,
+|           aka "SMBv2 Negotiation Vulnerability."
+|           
+|     Disclosure date: 2009-09-08
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3103
+|_      http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3103
+|_samba-vuln-cve-2012-1182: Could not negotiate a connection:SMB: Failed to receive bytes: TIMEOUT
+|_smb-vuln-ms10-061: Could not negotiate a connection:SMB: Failed to receive bytes: TIMEOUT
+
+TRACEROUTE (using port 445/tcp)
+HOP RTT      ADDRESS
+1   28.67 ms 192.168.45.1
+2   28.65 ms 192.168.45.254
+3   28.70 ms 192.168.251.1
+4   25.06 ms internal.offsec (192.168.192.40)
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 2) scan.
+Initiating NSE at 10:52
+Completed NSE at 10:52, 0.00s elapsed
+NSE: Starting runlevel 2 (of 2) scan.
+Initiating NSE at 10:52
+Completed NSE at 10:52, 0.00s elapsed
+Read data files from: /usr/share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 57.04 seconds
+           Raw packets sent: 39 (2.886KB) | Rcvd: 25 (1.722KB)
