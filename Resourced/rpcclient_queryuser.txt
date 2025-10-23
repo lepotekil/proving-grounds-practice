@@ -1,0 +1,302 @@
+rpcclient $> queryuser g.goldberg
+        User Name   :   G.Goldberg
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   Blockchain expert
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Wed, 31 Dec 1969 19:00:00 EST
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 13 Sep 30828 22:48:05 EDT
+        Password last set Time   :      Fri, 01 Oct 2021 07:14:53 EDT
+        Password can change Time :      Sat, 02 Oct 2021 07:14:53 EDT
+        Password must change Time:      Fri, 12 Nov 2021 06:14:53 EST
+        unknown_2[0..31]...
+        user_rid :      0x458
+        group_rid:      0x201
+        acb_info :      0x00020010
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x00000000
+        padding1[0..7]...
+        logon_hrs[0..21]...
+rpcclient $> queryuser d.durant
+        User Name   :   D.Durant
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   Linear Algebra and crypto god
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Wed, 31 Dec 1969 19:00:00 EST
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 13 Sep 30828 22:48:05 EDT
+        Password last set Time   :      Fri, 01 Oct 2021 07:14:53 EDT
+        Password can change Time :      Sat, 02 Oct 2021 07:14:53 EDT
+        Password must change Time:      Fri, 12 Nov 2021 06:14:53 EST
+        unknown_2[0..31]...
+        user_rid :      0x457
+        group_rid:      0x201
+        acb_info :      0x00020010
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x00000000
+        padding1[0..7]...
+        logon_hrs[0..21]...
+rpcclient $> queryuser r.robinson
+        User Name   :   R.Robinson
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   Database Admin
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Wed, 31 Dec 1969 19:00:00 EST
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 13 Sep 30828 22:48:05 EDT
+        Password last set Time   :      Fri, 01 Oct 2021 07:14:52 EDT
+        Password can change Time :      Sat, 02 Oct 2021 07:14:52 EDT
+        Password must change Time:      Fri, 12 Nov 2021 06:14:52 EST
+        unknown_2[0..31]...
+        user_rid :      0x456
+        group_rid:      0x201
+        acb_info :      0x00020010
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x00000000
+        padding1[0..7]...
+        logon_hrs[0..21]...
+rpcclient $> queryuser p.parker
+        User Name   :   P.Parker
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   Backend Developer
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Wed, 31 Dec 1969 19:00:00 EST
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 13 Sep 30828 22:48:05 EDT
+        Password last set Time   :      Fri, 01 Oct 2021 07:14:52 EDT
+        Password can change Time :      Sat, 02 Oct 2021 07:14:52 EDT
+        Password must change Time:      Fri, 12 Nov 2021 06:14:52 EST
+        unknown_2[0..31]...
+        user_rid :      0x455
+        group_rid:      0x201
+        acb_info :      0x00020010
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x00000000
+        padding1[0..7]...
+        logon_hrs[0..21]...
+rpcclient $> queryuser .s.swanson
+result was NT_STATUS_NONE_MAPPED
+rpcclient $> queryuser s.swan.son
+result was NT_STATUS_NONE_MAPPED
+rpcclient $> queryuser s.swanson
+        User Name   :   S.Swanson
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   Military Vet now cybersecurity specialist
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Wed, 31 Dec 1969 19:00:00 EST
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 13 Sep 30828 22:48:05 EDT
+        Password last set Time   :      Fri, 01 Oct 2021 07:14:52 EDT
+        Password can change Time :      Sat, 02 Oct 2021 07:14:52 EDT
+        Password must change Time:      Fri, 12 Nov 2021 06:14:52 EST
+        unknown_2[0..31]...
+        user_rid :      0x454
+        group_rid:      0x201
+        acb_info :      0x00020010
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x00000000
+        padding1[0..7]...
+        logon_hrs[0..21]...
+rpcclient $> queryuser v.ventz
+        User Name   :   V.Ventz
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   New-hired, reminder: HotelCalifornia194!
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Wed, 31 Dec 1969 19:00:00 EST
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 13 Sep 30828 22:48:05 EDT
+        Password last set Time   :      Fri, 01 Oct 2021 07:14:52 EDT
+        Password can change Time :      Sat, 02 Oct 2021 07:14:52 EDT
+        Password must change Time:      Wed, 13 Sep 30828 22:48:05 EDT
+        unknown_2[0..31]...
+        user_rid :      0x453
+        group_rid:      0x201
+        acb_info :      0x00000210
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x00000000
+        padding1[0..7]...
+        logon_hrs[0..21]...
+rpcclient $> queryuser j.johnson
+        User Name   :   J.Johnson
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   Networking specialist
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Wed, 31 Dec 1969 19:00:00 EST
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 13 Sep 30828 22:48:05 EDT
+        Password last set Time   :      Fri, 01 Oct 2021 07:14:52 EDT
+        Password can change Time :      Sat, 02 Oct 2021 07:14:52 EDT
+        Password must change Time:      Fri, 12 Nov 2021 06:14:52 EST
+        unknown_2[0..31]...
+        user_rid :      0x452
+        group_rid:      0x201
+        acb_info :      0x00020010
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x00000000
+        padding1[0..7]...
+        logon_hrs[0..21]...
+rpcclient $> queryuser l.livingstone
+        User Name   :   L.Livingstone
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   SysAdmin
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Fri, 01 Oct 2021 07:15:03 EDT
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 13 Sep 30828 22:48:05 EDT
+        Password last set Time   :      Fri, 01 Oct 2021 07:14:52 EDT
+        Password can change Time :      Sat, 02 Oct 2021 07:14:52 EDT
+        Password must change Time:      Wed, 13 Sep 30828 22:48:05 EDT
+        unknown_2[0..31]...
+        user_rid :      0x451
+        group_rid:      0x201
+        acb_info :      0x00000210
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x00000001
+        padding1[0..7]...
+        logon_hrs[0..21]...
+rpcclient $> queryuser k.keen
+        User Name   :   K.Keen
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   Frontend Developer
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Wed, 31 Dec 1969 19:00:00 EST
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 13 Sep 30828 22:48:05 EDT
+        Password last set Time   :      Fri, 01 Oct 2021 07:14:52 EDT
+        Password can change Time :      Sat, 02 Oct 2021 07:14:52 EDT
+        Password must change Time:      Fri, 12 Nov 2021 06:14:52 EST
+        unknown_2[0..31]...
+        user_rid :      0x450
+        group_rid:      0x201
+        acb_info :      0x00020010
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x00000000
+        padding1[0..7]...
+        logon_hrs[0..21]...
+rpcclient $> queryuser m.mason
+        User Name   :   M.Mason
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   Ex IT admin
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Wed, 31 Dec 1969 19:00:00 EST
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 13 Sep 30828 22:48:05 EDT
+        Password last set Time   :      Fri, 01 Oct 2021 07:14:52 EDT
+        Password can change Time :      Sat, 02 Oct 2021 07:14:52 EDT
+        Password must change Time:      Fri, 12 Nov 2021 06:14:52 EST
+        unknown_2[0..31]...
+        user_rid :      0x44f
+        group_rid:      0x201
+        acb_info :      0x00020010
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x00000000
+        padding1[0..7]...
+        logon_hrs[0..21]...
+rpcclient $> queryuser Administrator
+        User Name   :   Administrator
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   Built-in account for administering the computer/domain
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Thu, 23 Oct 2025 04:50:32 EDT
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 31 Dec 1969 19:00:00 EST
+        Password last set Time   :      Fri, 11 Feb 2022 12:21:21 EST
+        Password can change Time :      Sat, 12 Feb 2022 12:21:21 EST
+        Password must change Time:      Wed, 13 Sep 30828 22:48:05 EDT
+        unknown_2[0..31]...
+        user_rid :      0x1f4
+        group_rid:      0x201
+        acb_info :      0x00000210
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x00000035
+        padding1[0..7]...
+        logon_hrs[0..21]...
+rpcclient $> 
